@@ -8,6 +8,8 @@ import {
 } from "react-router-dom";
 import Home from "../home/Home";
 import Contact from "../contact/Contact";
+import Accommodations from "../accommodations/Accommodations";
+import Signin from "../signin/Signin";
 
 function NavBar() {
   return (
@@ -25,13 +27,13 @@ function NavBar() {
               <NavLink to="/" className="nav-link">
                 Home
               </NavLink>
-              <NavLink to="/contact" className="nav-link">
+              <NavLink to="/accommodations" className="nav-link">
                 Accommodations
               </NavLink>
               <NavLink to="/contact" className="nav-link">
                 Contact
               </NavLink>
-              <NavLink to="/contact" className="nav-link">
+              <NavLink to="/signin" className="nav-link">
                 Sign In
               </NavLink>
               <form class="d-flex">
@@ -51,6 +53,8 @@ function NavBar() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/accommodations" element={<Accommodations />} />
+          <Route path="/signin" element={<Signin />} />
         </Routes>
       </div>
     </Router>
