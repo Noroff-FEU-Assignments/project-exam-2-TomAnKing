@@ -10,6 +10,7 @@ import Home from "../home/Home";
 import Contact from "../contact/Contact";
 import Accommodations from "../accommodations/Accommodations";
 import Signin from "../signin/Signin";
+import Admin from "../admin/Admin";
 
 function NavBar() {
   return (
@@ -55,6 +56,7 @@ function NavBar() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/accommodations" element={<Accommodations />} />
           <Route path="/signin" element={<Signin />} />
+          <Route path="/admin" element={<Admin />} />
         </Routes>
       </div>
     </Router>
