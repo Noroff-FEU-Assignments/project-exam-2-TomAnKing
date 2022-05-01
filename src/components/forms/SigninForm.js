@@ -4,7 +4,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
 import FormError from "./FormError";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const url = "https://holidaze.tomanking.one/wp-json/jwt-auth/v1/token";
 
@@ -16,6 +16,8 @@ const schema = yup.object().shape({
 export default function LoginForm() {
   const [submitting, setSubmitting] = useState(false);
   const [loginError, setLoginError] = useState(null);
+
+  const navigate = useNavigate();
 
   const {
     register,
@@ -34,7 +36,8 @@ export default function LoginForm() {
     try {
       const response = await axios.post(url, data);
       console.log("response", response.data);
-      window.location.href = "/admin";
+
+      navigate("/admin");
     } catch (error) {
       console.log("error", error);
       setLoginError("Wrong username or password");
