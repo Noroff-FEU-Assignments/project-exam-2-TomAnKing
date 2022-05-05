@@ -4,8 +4,8 @@ import React, { useState } from "react";
 function Home({ hotels }) {
   return (
     <>
+      <img src={headerImage} className="headerImg" />
       <div className="container">
-        <img src={headerImage} className="headerImg" />
         <h1>test</h1>
       </div>
     </>

@@ -16,7 +16,10 @@ function Accommodations({ hotels }) {
             return (
               <div className="hotel" key={hotel.id}>
                 <img className="hotelImg" src={hotel.acf.image} />
-                <h2 className="hotelTitle">{hotel.title.rendered}</h2>
+                <div className="middle">
+                  <h2 className="hotelTitle">{hotel.title.rendered}</h2>
+                  <p>* * * * *</p>
+                </div>
                 <p className="hotelPrice">
                   From <span className="priceSpan">${hotel.acf.price}</span> per
                   night

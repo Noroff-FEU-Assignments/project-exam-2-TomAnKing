@@ -1,0 +1,52 @@
+.hotels {
+    margin-top: 40px;
+}
+  
+.searchHotel {
+    float: left;
+    width: 20%;
+}
+  
+.hotel {
+   background-color: #fef;
+   width: 80%;
+   margin-bottom: 15px;
+   display: flex;
+   flex-direction: row;
+   margin-left: 20%;
+}
+  
+  
+.hotelImg{
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    padding: 0.5em;
+}
+  
+.hotelTitle {
+    margin-top: 1em;
+}
+  
+.middle {
+    margin-left: 2em;
+    flex: 22 1 auto;
+    text-align: left;
+}
+  
+.middle > p {
+    font-size: 20px;
+    margin-top: 1em;
+}
+  
+.hotelPrice {
+    flex: 0.5 1 auto;
+    align-self:flex-end;
+}
+  
+  
+.priceSpan {
+    color: green;
+    font-weight: bold;
+    font-size: 20px;
+}
