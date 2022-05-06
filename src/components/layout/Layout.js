@@ -12,6 +12,7 @@ import Accommodations from "../accommodations/Accommodations";
 import Signin from "../signin/Signin";
 import Admin from "../admin/Admin";
 import FetchHotels from "../../config/FetchHotels";
+import Accommodation from "../accommodations/Accommodation";
 
 function Layout() {
   const hotel = FetchHotels();
@@ -62,6 +63,7 @@ function Layout() {
           />
           <Route path="/signin" element={<Signin />} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="/accommodations/:id" element={<Accommodation />} />
         </Routes>
       </div>
     </Router>
