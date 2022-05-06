@@ -24,6 +24,7 @@ function Accommodation() {
           const response = await axios.get(url);
           setHotel(response.data);
         } catch (error) {
+          setError(error);
           console.log(error);
         } finally {
           setLoading(false);
