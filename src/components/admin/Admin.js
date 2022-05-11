@@ -1,5 +1,12 @@
+import AddHotel from "./AddHotel";
+
 function Admin() {
-  return <h1>Admin</h1>;
+  return (
+    <div className="container">
+      <h1>Admin</h1>
+      <AddHotel />
+    </div>
+  );
 }
 
 export default Admin;

@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
 import FormError from "./FormError";
 import { useNavigate } from "react-router-dom";
+import AuthContext from "../../context/AuthContext";
 
 const url = "https://holidaze.tomanking.one/wp-json/jwt-auth/v1/token";
 
@@ -27,6 +28,8 @@ export default function LoginForm() {
     resolver: yupResolver(schema),
   });
 
+  const [, setAuth] = useContext(AuthContext);
+
   async function onSubmit(data) {
     setSubmitting(true);
     setLoginError(null);
@@ -36,7 +39,7 @@ export default function LoginForm() {
     try {
       const response = await axios.post(url, data);
       console.log("response", response.data);
-
+      setAuth(response.data);
       navigate("/admin");
     } catch (error) {
       console.log("error", error);
