@@ -38,17 +38,17 @@ export default function ContactForm() {
   console.log(errors);
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="form">
-      <label>First Name</label>
+      <label className="formLabel">First Name</label>
       <input {...register("firstname")} className="formInput" />
       {errors.firstname && <FormError>{errors.firstname.message}</FormError>}
-      <label>Last Name</label>
+      <label className="formLabel">Last Name</label>
       <input {...register("lastname")} className="formInput" />
       {errors.lastname && <FormError>{errors.lastname.message}</FormError>}
-      <label>Email</label>
+      <label className="formLabel">Email</label>
       <input {...register("email")} className="formInput" />
       {errors.email && <FormError>{errors.email.message}</FormError>}
-      <label>Message</label>
-      <textarea {...register("message")} className="formInput" />
+      <label className="formLabel">Message</label>
+      <textarea rows={10} {...register("message")} className="formInput" />
       {errors.message && <FormError>{errors.message.message}</FormError>}
 
       <button className="formBtn">Contact</button>

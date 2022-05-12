@@ -53,7 +53,7 @@ export default function LoginForm() {
       {loginError && <FormError>{loginError}</FormError>}
       <fieldset disabled={submitting}>
         <div>
-          <label>Username</label>
+          <label className="formLabel">Username</label>
           <input
             name="username"
             {...register("username")}
@@ -63,7 +63,7 @@ export default function LoginForm() {
         </div>
 
         <div>
-          <label>Password</label>
+          <label className="formLabel">Password</label>
           <input
             name="password"
             {...register("password")}

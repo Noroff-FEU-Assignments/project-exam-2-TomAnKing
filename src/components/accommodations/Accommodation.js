@@ -2,12 +2,22 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import ModalGalery from "./ModalGalery";
+import { DateRange } from "react-date-range";
+import "react-date-range/dist/styles.css"; // main css file
+import "react-date-range/dist/theme/default.css"; // theme css file
 
 function Accommodation() {
   const [isActive, setIsActive] = useState(false);
   const [hotel, setHotel] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [state, setState] = useState([
+    {
+      startDate: new Date(),
+      endDate: null,
+      key: "selection",
+    },
+  ]);
 
   let navigate = useNavigate();
 
@@ -105,21 +115,30 @@ function Accommodation() {
       <div className="container">
         <div className="hotel-detail">
           <h1>{hotel.title.rendered}</h1>
-          <img
-            onClick={handleClick}
-            className="hotelImg"
-            id="test"
-            src={hotel.acf.image}
-          />
-          <img
-            onClick={handleClick}
-            className="hotelImg"
-            src={hotel.acf.modal_image_1}
-          />
-          <img
-            onClick={handleClick}
-            className="hotelImg"
-            src={hotel.acf.modal_image_2}
+          <div className="hotelDetailImages">
+            <img
+              onClick={handleClick}
+              className="hotelDetailImg"
+              id="test"
+              src={hotel.acf.image}
+            />
+            <img
+              onClick={handleClick}
+              className="testImg"
+              src={hotel.acf.modal_image_1}
+            />
+            <img
+              onClick={handleClick}
+              className="testImg2"
+              src={hotel.acf.modal_image_2}
+            />
+          </div>
+          <p>${hotel.acf.price}</p>
+          <DateRange
+            editableDateInputs={true}
+            onChange={(item) => setState([item.selection])}
+            moveRangeOnFirstSelection={false}
+            ranges={state}
           />
           <div dangerouslySetInnerHTML={createMarkup()} />
         </div>

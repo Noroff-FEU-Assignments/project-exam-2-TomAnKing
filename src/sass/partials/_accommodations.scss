@@ -4,7 +4,12 @@
   
 .searchHotel {
     float: left;
+    font-size: 18px;
     width: 20%;
+}
+
+.searchHotel > h2 {
+    font-size: 20px;
 }
   
 .hotel {
@@ -31,6 +36,7 @@ a:hover {
     object-fit: cover;
     padding: 0.5em;
 }
+
   
 .hotelTitle {
     margin-top: 1em;
