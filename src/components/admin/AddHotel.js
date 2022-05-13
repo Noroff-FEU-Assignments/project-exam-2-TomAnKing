@@ -8,6 +8,7 @@ import useAxios from "../../hooks/useAxios";
 const schema = yup.object().shape({
   title: yup.string().required("Title is required"),
   content: yup.string().required("Content is required"),
+  //price: yup.string().required("Add price"),
 });
 
 export default function AddHotel() {
@@ -16,7 +17,11 @@ export default function AddHotel() {
 
   const http = useAxios();
 
-  const { register, handleSubmit, errors } = useForm({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
     resolver: yupResolver(schema),
   });
 
@@ -29,8 +34,8 @@ export default function AddHotel() {
     console.log(data);
 
     try {
-      const response = await http.post("/wp/v2/posts", data);
-      console.log("response", response.data);
+      const response = await http.post("wp/v2/hotels", data);
+      // console.log("response", response.data);
     } catch (error) {
       console.log("error", error);
       setServerError(error.toString());
@@ -44,13 +49,13 @@ export default function AddHotel() {
       {serverError && <FormError>{serverError}</FormError>}
       <fieldset disabled={submitting}>
         <div>
-          <label>Title</label>
-          <input name="title" {...register("title")} className="formInput" />
+          <label className="formLabel">Title</label>
+          <input name="title2" {...register("title")} className="formInput" />
           {errors.title && <FormError>{errors.title.message}</FormError>}
         </div>
 
         <div>
-          <label>Content</label>
+          <label className="formLabel">Content</label>
           <input
             name="content"
             {...register("content")}
@@ -58,6 +63,17 @@ export default function AddHotel() {
             className="formInput"
           />
           {errors.content && <FormError>{errors.content.message}</FormError>}
+        </div>
+        <div>
+          <label className="formLabel">Price</label>
+
+          <input
+            name="price"
+            {...register("fields.price")}
+            className="formInput"
+            type="number"
+          />
+          {errors.price && <FormError>{errors.price.message}</FormError>}
         </div>
         <button className="formBtn">Add Hotel</button>
       </fieldset>

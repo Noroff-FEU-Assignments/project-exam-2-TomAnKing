@@ -5,6 +5,7 @@ import ModalGalery from "./ModalGalery";
 import { DateRange } from "react-date-range";
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
+import BookingModal from "./BookingModal";
 
 function Accommodation() {
   const [isActive, setIsActive] = useState(false);
@@ -18,6 +19,7 @@ function Accommodation() {
       key: "selection",
     },
   ]);
+  const [modalShow, setModalShow] = useState(false);
 
   let navigate = useNavigate();
 
@@ -142,6 +144,11 @@ function Accommodation() {
           />
           <div dangerouslySetInnerHTML={createMarkup()} />
         </div>
+        <button variant="primary" onClick={() => setModalShow(true)}>
+          Book
+        </button>
+
+        <BookingModal show={modalShow} onHide={() => setModalShow(false)} />
       </div>
     </>
   );

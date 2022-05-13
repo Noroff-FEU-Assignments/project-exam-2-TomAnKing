@@ -6,8 +6,9 @@ import axios from "axios";
 import FormError from "./FormError";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
+import { BASE_URL, TOKEN_PATH } from "../../constants/api";
 
-const url = "https://holidaze.tomanking.one/wp-json/jwt-auth/v1/token";
+const url = BASE_URL + TOKEN_PATH;
 
 const schema = yup.object().shape({
   username: yup.string().required("Please enter your username"),
@@ -34,12 +35,12 @@ export default function LoginForm() {
     setSubmitting(true);
     setLoginError(null);
 
-    console.log(data);
-
     try {
       const response = await axios.post(url, data);
-      console.log("response", response.data);
+      //  console.log("response", response.data);
       setAuth(response.data);
+
+      localStorage.setItem("auth", response.data.token);
       navigate("/admin");
     } catch (error) {
       console.log("error", error);
