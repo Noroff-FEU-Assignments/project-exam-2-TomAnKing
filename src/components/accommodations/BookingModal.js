@@ -58,11 +58,7 @@ export default function BookingModal(props) {
             <FormError>{errors.cardnumber.message}</FormError>
           )}
           <label className="formLabel">Expiry date</label>
-          <input
-            type="date"
-            {...register("expirydate")}
-            className="formInput"
-          />
+
           <select name="expireMM" id="expireMM">
             <option value="">Month</option>
             <option value="01">January</option>

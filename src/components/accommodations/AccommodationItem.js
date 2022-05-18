@@ -13,7 +13,7 @@ export default function AccommodationItem({ hotel }) {
       <img className="hotelImg" src={hotel.acf.image} />
       <div className="middle">
         <h2 className="hotelTitle">{hotel.title.rendered}</h2>
-        <p id="stars">{starsArray[hotel.acf.stars]}</p>
+        <div className="stars"> {starsArray[hotel.acf.stars]}</div>
       </div>
       <p className="hotelPrice">
         From <span className="priceSpan">${hotel.acf.price}</span> per night

@@ -1,15 +1,19 @@
-import { useContext } from "react";
 import axios from "axios";
 
 const url = process.env.REACT_APP_BASE_URL;
 
-export default function useAxios() {
+export default function useAxios(test) {
   const apiClient = axios.create({
     baseURL: url,
   });
 
   apiClient.interceptors.request.use(function (config) {
-    const token = localStorage.getItem("auth");
+    let token;
+    if (test) {
+      token = test;
+    } else {
+      token = localStorage.getItem("auth");
+    }
 
     console.log(token);
     config.headers.Authorization = token ? `Bearer ${token}` : "";

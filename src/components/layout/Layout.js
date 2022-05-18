@@ -40,17 +40,6 @@ function Layout() {
               <NavLink to="/signin" className="nav-link">
                 Sign In
               </NavLink>
-              <form className="d-flex">
-                <input
-                  className="form-control me-2"
-                  type="search"
-                  placeholder="Search"
-                  aria-label="Search"
-                />
-                <button className="btn btn-outline-success" type="submit">
-                  Search
-                </button>
-              </form>
             </Nav>
           </Navbar.Collapse>
         </Navbar>

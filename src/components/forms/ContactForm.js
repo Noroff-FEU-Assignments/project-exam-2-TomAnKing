@@ -1,55 +1,54 @@
 import { useForm } from "react-hook-form";
-import * as yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
-import FormError from "./FormError";
-
-const schema = yup.object().shape({
-  firstname: yup
-    .string()
-    .required("Please enter your first name")
-    .min(3, "First name must contain at least 3 characters"),
-  lastname: yup
-    .string()
-    .required("Please enter your last name")
-    .min(4, "Last name must contain at least 4 characters"),
-  email: yup
-    .string()
-    .required("Please enter an email address")
-    .email("Please enter a valid email address"),
-  message: yup
-    .string()
-    .required("Please enter your message")
-    .min(10, "The message must be at least 10 characters"),
-});
+import { useState } from "react";
+import useAxios from "../../hooks/useAxios";
 
 export default function ContactForm() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
-    resolver: yupResolver(schema),
-  });
+  const [submitting, setSubmitting] = useState(false);
+  const [serverError, setServerError] = useState(null);
 
-  function onSubmit(data) {
+  const token =
+    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvaG9saWRhemUudG9tYW5raW5nLm9uZSIsImlhdCI6MTY1Mjg5MzAzNywibmJmIjoxNjUyODkzMDM3LCJleHAiOjE2NTM0OTc4MzcsImRhdGEiOnsidXNlciI6eyJpZCI6IjEifX19.kdIl-g2zoSvSZpA41z7gH0aKRCXSfzoehQx-Tr-zc28";
+  const http = useAxios(token);
+
+  const { register, handleSubmit } = useForm({});
+
+  async function onSubmit(data) {
+    setSubmitting(true);
+    setServerError(null);
+
+    data.status = "publish";
+
     console.log(data);
+
+    try {
+      const response = await http.post("wp/v2/messages", data);
+
+      // console.log("response", response.data);
+    } catch (error) {
+      console.log("error", error);
+      setServerError(error.toString());
+    } finally {
+      setSubmitting(false);
+    }
   }
 
-  console.log(errors);
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="form">
       <label className="formLabel">First Name</label>
-      <input {...register("firstname")} className="formInput" />
-      {errors.firstname && <FormError>{errors.firstname.message}</FormError>}
+      <input {...register("fields.first_name")} className="formInput" />
+
       <label className="formLabel">Last Name</label>
-      <input {...register("lastname")} className="formInput" />
-      {errors.lastname && <FormError>{errors.lastname.message}</FormError>}
+      <input {...register("fields.last_name")} className="formInput" />
+
       <label className="formLabel">Email</label>
-      <input {...register("email")} className="formInput" />
-      {errors.email && <FormError>{errors.email.message}</FormError>}
+      <input {...register("fields.email")} className="formInput" />
+
       <label className="formLabel">Message</label>
-      <textarea rows={10} {...register("message")} className="formInput" />
-      {errors.message && <FormError>{errors.message.message}</FormError>}
+      <textarea
+        rows={10}
+        {...register("fields.message")}
+        className="formInput"
+      />
 
       <button className="formBtn">Contact</button>
     </form>

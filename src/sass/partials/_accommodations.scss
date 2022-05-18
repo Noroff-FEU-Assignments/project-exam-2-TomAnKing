@@ -11,6 +11,12 @@
 .searchHotel > h2 {
     font-size: 20px;
 }
+
+.sortHotel {
+    width: 50%;
+    left: 0;
+    margin-top: 20px;
+}
   
 .hotel {
    background-color: #fef;
@@ -63,5 +69,9 @@ a:hover {
     color: green;
     font-weight: bold;
     font-size: 20px;
+}
+
+.stars {
+    margin-top: 20px;
 }
 

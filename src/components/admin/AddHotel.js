@@ -8,7 +8,8 @@ import useAxios from "../../hooks/useAxios";
 const schema = yup.object().shape({
   title: yup.string().required("Title is required"),
   content: yup.string().required("Content is required"),
-  //price: yup.string().required("Add price"),
+  /*   price: yup.number().required("Add price"),
+  stars: yup.number().required("Add stars"), */
 });
 
 export default function AddHotel() {
@@ -35,6 +36,7 @@ export default function AddHotel() {
 
     try {
       const response = await http.post("wp/v2/hotels", data);
+
       // console.log("response", response.data);
     } catch (error) {
       console.log("error", error);
@@ -74,6 +76,29 @@ export default function AddHotel() {
             type="number"
           />
           {errors.price && <FormError>{errors.price.message}</FormError>}
+        </div>
+        <div>
+          <label className="formLabel">Stars</label>
+
+          <input
+            name="stars"
+            {...register("fields.stars")}
+            className="formInput"
+            type="number"
+          />
+          {errors.stars && <FormError>{errors.stars.message}</FormError>}
+        </div>
+        <div>
+          <label className="formLabel">Image</label>
+
+          <input
+            name="stars"
+            {...register("fields.test_bilde")}
+            className="formInput"
+            type="file"
+            accept="image/*"
+          />
+          {errors.stars && <FormError>{errors.stars.message}</FormError>}
         </div>
         <button className="formBtn">Add Hotel</button>
       </fieldset>

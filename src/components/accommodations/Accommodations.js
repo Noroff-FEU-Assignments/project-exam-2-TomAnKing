@@ -23,13 +23,34 @@ class Accommodations extends React.Component {
 
     return results;
   }
+
+  sortHotels(value) {
+    const hotels = this.props.hotels;
+
+    switch (value) {
+      case "price ascend":
+        hotels.sort((a, b) => (a.acf.price > b.acf.price ? 1 : -1));
+        break;
+      case "price descend":
+        hotels.sort((a, b) => (a.acf.price < b.acf.price ? 1 : -1));
+        break;
+      case "stars ascend":
+        hotels.sort((a, b) => (a.acf.stars > b.acf.stars ? 1 : -1));
+        break;
+      case "stars descend":
+        hotels.sort((a, b) => (a.acf.stars < b.acf.stars ? 1 : -1));
+        break;
+    }
+
+    this.setState({
+      hotels: hotels,
+    });
+  }
   render() {
     const hotels =
       this.state.hotels.length || this.state.hasRefreshed
         ? this.state.hotels
         : this.props.hotels;
-
-    hotels.sort((a, b) => (a.title.rendered > b.title.rendered ? 1 : -1));
 
     return (
       <>
@@ -48,10 +69,17 @@ class Accommodations extends React.Component {
                   })
                 }
               ></input>
-              <h2>From</h2>
-              <input type="date"></input>
-              <h2>To</h2>
-              <input type="date"></input>
+              <select
+                id="sortHotels"
+                onChange={(e) => this.sortHotels(e.target.value)}
+                className="sortHotel"
+              >
+                <option value="-1">--</option>
+                <option value="price ascend">Price Low-High</option>
+                <option value="price descend">Price High-Low</option>
+                <option value="stars ascend">Stars Low-High</option>
+                <option value="stars descend">Stars High-Low</option>
+              </select>
             </div>
             {hotels.map((hotel) => {
               return (
