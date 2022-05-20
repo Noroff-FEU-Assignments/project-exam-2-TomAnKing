@@ -14,7 +14,7 @@ class Accommodations extends React.Component {
 
   search(val, hotels) {
     let results = hotels.filter((hotel) =>
-      hotel.title.rendered.toLowerCase().includes(val)
+      hotel.title.rendered.toLowerCase().includes(val.toLowerCase())
     );
 
     this.setState({

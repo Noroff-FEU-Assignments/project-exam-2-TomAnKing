@@ -13,6 +13,7 @@ import Signin from "../signin/Signin";
 import Admin from "../admin/Admin";
 import FetchHotels from "../../config/FetchHotels";
 import Accommodation from "../accommodations/Accommodation";
+import Footer from "./Footer";
 
 function Layout() {
   const hotel = FetchHotels();
@@ -55,6 +56,7 @@ function Layout() {
           <Route path="/accommodations/:id" element={<Accommodation />} />
         </Routes>
       </div>
+      <Footer />
     </Router>
   );
 }

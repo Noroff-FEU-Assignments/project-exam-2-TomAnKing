@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import AccommodationItem from "../accommodations/AccommodationItem";
+import SearchedItem from "./SearchedItem";
 
 function SearchBar({ placeholder, hotels }) {
   const [filteredData, setFilteredData] = useState([]);
@@ -27,6 +27,7 @@ function SearchBar({ placeholder, hotels }) {
       <div className="searchInputs">
         <input
           type="text"
+          className="searchInput"
           placeholder={placeholder}
           value={wordEntered}
           onChange={handleFilter}
@@ -34,10 +35,10 @@ function SearchBar({ placeholder, hotels }) {
       </div>
       {filteredData.length != 0 && (
         <div className="dataResult">
-          {filteredData.slice(0, 15).map((value, key) => {
+          {filteredData.map((value) => {
             return (
-              <Link to={`accommodations/${value.id}`} key={hotels.id}>
-                <AccommodationItem hotel={value} />
+              <Link to={`accommodations/${value.id}`} key={value.id}>
+                <SearchedItem hotel={value} />
               </Link>
             );
           })}

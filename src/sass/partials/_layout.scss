@@ -1,5 +1,9 @@
 html, body {
-    margin: 0%;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .container {
@@ -8,5 +12,54 @@ html, body {
     width: 80%;
     margin: auto;
     max-width: 1800px;
+    flex: 1 0 auto;
+    min-height: 100%;
   }
 
+.footer {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position:fixed;
+    bottom:0;
+    width:100%;
+    height:60px;   /* Height of the footer */
+    background-color: grey;
+    color: white;
+}
+
+.footerIcons {
+    font-size: 25px;
+    margin-left: 5%;
+    @media (max-width: 992px) {
+      text-align: center;
+      margin: 0%;
+    }
+  }
+  
+  #footerCopyright {
+    margin-right: 5%;
+    @media (max-width: 992px) {
+      float: right;
+      margin-right: 2%;
+      margin-top: 1em;
+    }
+  }
+  
+  #footerEmail {
+    text-align: center;
+    @media (max-width: 992px) {
+      float: left;
+      margin-left: 2%;
+      margin-top: 1em;
+    }
+  }
+  
+  #instagram {
+    margin-right: 7px;
+  }
+  
+  #twitter {
+    margin-left: 7px;
+  }
