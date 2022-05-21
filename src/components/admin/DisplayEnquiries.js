@@ -1,4 +1,7 @@
-function DisplayEnquiries({ enquiries }) {
+import { FetchEnquiries } from "../../config/FetchHotels";
+
+function DisplayEnquiries() {
+  const enquiries = FetchEnquiries();
   return (
     <div className="container">
       <h1>Enquiries</h1>
