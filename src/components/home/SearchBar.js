@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import SearchedItem from "./SearchedItem";
+import AccommodationItem from "../accommodations/AccommodationItem";
 
 function SearchBar({ placeholder, hotels }) {
   const [filteredData, setFilteredData] = useState([]);
@@ -38,7 +38,7 @@ function SearchBar({ placeholder, hotels }) {
           {filteredData.map((value) => {
             return (
               <Link to={`accommodations/${value.id}`} key={value.id}>
-                <SearchedItem hotel={value} />
+                <AccommodationItem hotel={value} style={"searchedHotel"} />
               </Link>
             );
           })}

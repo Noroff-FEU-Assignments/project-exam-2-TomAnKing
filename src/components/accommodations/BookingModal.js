@@ -3,8 +3,10 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import FormError from "../forms/FormError";
+import { useState } from "react";
+import useAxios from "../../hooks/useAxios";
 
-const schema = yup.object().shape({
+/* const schema = yup.object().shape({
   name: yup
     .string()
     .required("Please enter your name")
@@ -22,19 +24,44 @@ const schema = yup.object().shape({
     .required("Please enter your message")
     .min(3, "The security code must be 3 characters")
     .typeError("Security code must be a number"),
-});
+}); */
 
 export default function BookingModal(props) {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
-    resolver: yupResolver(schema),
-  });
+  const [submitting, setSubmitting] = useState(false);
+  const [serverError, setServerError] = useState(null);
 
-  function onSubmit(data) {
+  const token =
+    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvaG9saWRhemUudG9tYW5raW5nLm9uZSIsImlhdCI6MTY1Mjg5MzAzNywibmJmIjoxNjUyODkzMDM3LCJleHAiOjE2NTM0OTc4MzcsImRhdGEiOnsidXNlciI6eyJpZCI6IjEifX19.kdIl-g2zoSvSZpA41z7gH0aKRCXSfzoehQx-Tr-zc28";
+  const http = useAxios(token);
+
+  const { register, handleSubmit } = useForm({});
+
+  async function onSubmit(data) {
+    setSubmitting(true);
+    setServerError(null);
+
+    data.status = "publish";
+
+    data.fields.from_date = props.datepicker.startDate;
+
+    data.fields.to_date = props.datepicker.endDate;
+
+    data.title = props.title;
+
     console.log(data);
+
+    try {
+      const response = await http.post("wp/v2/enquiries", data);
+
+      //register("fields.to_date", { value: datepicker.props.ranges[0].endDate });
+
+      // console.log("response", response.data);
+    } catch (error) {
+      console.log("error", error);
+      setServerError(error.toString());
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
@@ -50,46 +77,49 @@ export default function BookingModal(props) {
       <Modal.Body>
         <form onSubmit={handleSubmit(onSubmit)} className="">
           <label className="formLabel">Name on card</label>
-          <input {...register("name")} className="formInput" />
-          {errors.name && <FormError>{errors.name.message}</FormError>}
+          <input {...register("fields.card_name")} className="formInput" />
+          {/*  {errors.name && <FormError>{errors.name.message}</FormError>} */}
           <label className="formLabel">Card number</label>
-          <input {...register("cardnumber")} className="formInput" />
-          {errors.cardnumber && (
+          <input
+            {...register("fields.card_number")}
+            className="formInput"
+            placeholder="0000000000000000"
+            maxLength={16}
+            type="number"
+          />
+          {/*  {errors.cardnumber && (
             <FormError>{errors.cardnumber.message}</FormError>
-          )}
-          <label className="formLabel">Expiry date</label>
-
-          <select name="expireMM" id="expireMM">
-            <option value="">Month</option>
-            <option value="01">January</option>
-            <option value="02">February</option>
-            <option value="03">March</option>
-            <option value="04">April</option>
-            <option value="05">May</option>
-            <option value="06">June</option>
-            <option value="07">July</option>
-            <option value="08">August</option>
-            <option value="09">September</option>
-            <option value="10">October</option>
-            <option value="11">November</option>
-            <option value="12">December</option>
-          </select>
-          <select name="expireYY" id="expireYY">
-            <option value="">Year</option>
-            <option value="20">2022</option>
-            <option value="21">2023</option>
-            <option value="22">2024</option>
-            <option value="23">2025</option>
-            <option value="24">2026</option>
-          </select>
-          {errors.expirydate && (
+          )} */}
+          <label className="formLabel">Expiration date</label>
+          <input
+            {...register("fields.expiration_date")}
+            className="formInput"
+            placeholder="00"
+            maxLength={2}
+            type="number"
+          />
+          /
+          <input
+            {...register("fields.expiration_date")}
+            className="formInput"
+            placeholder="00"
+            maxLength={2}
+            type="number"
+          />
+          {/*  {errors.expirydate && (
             <FormError>{errors.expirydate.message}</FormError>
-          )}
+          )} */}
           <label className="formLabel">Security Code</label>
-          <input {...register("securitycode")} className="formInput" />
-          {errors.securitycode && (
+          <input
+            {...register("fields.security_code")}
+            className="formInput"
+            placeholder="000"
+            maxLength={3}
+            type="number"
+          />
+          {/* {errors.securitycode && (
             <FormError>{errors.securitycode.message}</FormError>
-          )}
+          )} */}
           <button className="formBtn">Complete Booking</button>
         </form>
       </Modal.Body>

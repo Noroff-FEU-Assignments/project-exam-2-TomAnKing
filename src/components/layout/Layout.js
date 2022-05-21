@@ -11,12 +11,21 @@ import Contact from "../contact/Contact";
 import Accommodations from "../accommodations/Accommodations";
 import Signin from "../signin/Signin";
 import Admin from "../admin/Admin";
-import FetchHotels from "../../config/FetchHotels";
+import FetchHotels, {
+  FetchEnquiries,
+  FetchMessages,
+} from "../../config/FetchHotels";
 import Accommodation from "../accommodations/Accommodation";
 import Footer from "./Footer";
+import AddHotel from "../admin/AddHotel";
+import DisplayMessages from "../admin/DisplayMessages";
+import DisplayEnquiries from "../admin/DisplayEnquiries";
 
 function Layout() {
   const hotel = FetchHotels();
+  const message = FetchMessages();
+  const enquiry = FetchEnquiries();
+
   return (
     <Router>
       <div>
@@ -54,6 +63,15 @@ function Layout() {
           <Route path="/signin" element={<Signin />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/accommodations/:id" element={<Accommodation />} />
+          <Route path="/admin/add-hotel" element={<AddHotel />} />
+          <Route
+            path="/admin/messages"
+            element={<DisplayMessages messages={message} />}
+          />
+          <Route
+            path="/admin/enquiries"
+            element={<DisplayEnquiries enquiries={enquiry} />}
+          />
         </Routes>
       </div>
       <Footer />

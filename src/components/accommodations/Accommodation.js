@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import ModalGalery from "./ModalGalery";
 import { DateRange } from "react-date-range";
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
@@ -15,7 +14,7 @@ function Accommodation() {
   const [state, setState] = useState([
     {
       startDate: new Date(),
-      endDate: null,
+      endDate: new Date(),
       key: "selection",
     },
   ]);
@@ -80,7 +79,23 @@ function Accommodation() {
     });
   });
 
+  const datepicker = (
+    <DateRange
+      editableDateInputs={false}
+      onChange={(item) => {
+        setState([
+          {
+            startDate: new Date(item.selection.startDate.setHours(12)),
+            endDate: new Date(item.selection.endDate.setHours(12)),
+            key: item.selection.key,
+          },
+        ]);
+      }}
+      ranges={state}
+    />
+  );
   const handleClick = () => {
+    console.log(datepicker.props.ranges[0].endDate);
     setIsActive((current) => !current);
   };
 
@@ -136,19 +151,19 @@ function Accommodation() {
             />
           </div>
           <p>${hotel.acf.price}</p>
-          <DateRange
-            editableDateInputs={true}
-            onChange={(item) => setState([item.selection])}
-            moveRangeOnFirstSelection={false}
-            ranges={state}
-          />
+          {datepicker}
           <div dangerouslySetInnerHTML={createMarkup()} />
         </div>
         <button variant="primary" onClick={() => setModalShow(true)}>
           Book
         </button>
 
-        <BookingModal show={modalShow} onHide={() => setModalShow(false)} />
+        <BookingModal
+          show={modalShow}
+          onHide={() => setModalShow(false)}
+          datepicker={datepicker.props.ranges[0]}
+          title={hotel.title.rendered}
+        />
       </div>
     </>
   );

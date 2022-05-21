@@ -50,18 +50,17 @@
     margin-top: 5px;
     background-color: white;
     width: 55%;
-    height: 250px;
+    height: 350px;
     overflow: hidden;
     overflow-y: auto;
     position: absolute;
-    top: 68%;
+    top: 74%;
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 0.5em;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
  
 }
-
 
 
 .dataResult::-webkit-scrollbar {
@@ -75,6 +74,10 @@
     margin: auto;
     margin-top: 2px;
     border-bottom: 1px solid grey;
+}
+
+.searchedHotel:hover {
+    opacity: 0.8;
 }
 
 .searchedHotel > img {

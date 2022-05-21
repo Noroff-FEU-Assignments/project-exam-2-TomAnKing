@@ -84,7 +84,7 @@ class Accommodations extends React.Component {
             {hotels.map((hotel) => {
               return (
                 <Link to={`${hotel.id}`} key={hotel.id}>
-                  <AccommodationItem hotel={hotel} />
+                  <AccommodationItem hotel={hotel} style={"hotel"} />
                 </Link>
               );
             })}
