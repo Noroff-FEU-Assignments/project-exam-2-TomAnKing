@@ -81,6 +81,7 @@ export default function AddHotel() {
   return (
     <div className="container">
       <form onSubmit={handleSubmit(onSubmit)} className="form">
+        <h1>Add Hotel</h1>
         {serverError && <FormError>{serverError}</FormError>}
         <fieldset disabled={submitting}>
           <div>
@@ -91,10 +92,9 @@ export default function AddHotel() {
 
           <div>
             <label className="formLabel">Content</label>
-            <input
-              name="content"
+            <textarea
+              rows={10}
               {...register("content")}
-              type="textarea"
               className="formInput"
             />
             {errors.content && <FormError>{errors.content.message}</FormError>}
@@ -112,17 +112,17 @@ export default function AddHotel() {
           </div>
           <div>
             <label className="formLabel">Stars</label>
-
             <input
               name="stars"
               {...register("fields.stars")}
               className="formInput"
               type="number"
+              maxLength={1}
             />
             {errors.stars && <FormError>{errors.stars.message}</FormError>}
           </div>
           <div>
-            <label className="formLabel">Image</label>
+            <label className="formLabel">Main Image</label>
 
             <input
               name="stars"
@@ -134,7 +134,7 @@ export default function AddHotel() {
             {errors.stars && <FormError>{errors.stars.message}</FormError>}
           </div>
           <div>
-            <label className="formLabel">Image</label>
+            <label className="formLabel">Gallery Image 1</label>
 
             <input
               name="stars"
@@ -146,7 +146,7 @@ export default function AddHotel() {
             {errors.stars && <FormError>{errors.stars.message}</FormError>}
           </div>
           <div>
-            <label className="formLabel">Image</label>
+            <label className="formLabel">Gallery Image 2</label>
 
             <input
               name="stars"

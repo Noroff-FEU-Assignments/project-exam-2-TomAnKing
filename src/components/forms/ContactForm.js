@@ -34,6 +34,7 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="form">
+      <h1>Contact</h1>
       <label className="formLabel">First Name</label>
       <input {...register("fields.first_name")} className="formInput" />
 

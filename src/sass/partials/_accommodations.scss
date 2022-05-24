@@ -8,16 +8,36 @@
     width: 20%;
     height: 100%;
     position: fixed;
+    @media (max-width: 992px) {
+     float: none;
+     width: 100%;
+     position: relative;
+      }
 }
 
 .searchHotel > h2 {
     font-size: 20px;
+    width: 80%;
+}
+
+.searchHotel input {
+    width: 70%;
+    max-width: 300px;
+    display: block;
+    @media (max-width: 992px) {
+        width: 100%;
+    }
 }
 
 .sortHotel {
     width: 50%;
     left: 0;
+    max-width: 200px;
     margin-top: 20px;
+    @media (max-width: 992px) {
+    width: 20%;
+    margin-bottom: 1em;
+    }
 }
   
 .hotel {
@@ -27,6 +47,12 @@
    display: flex;
    flex-direction: row;
    margin-left: 20%;
+   @media (max-width: 992px) {  
+       width: 100%;
+       display: block;
+       margin: 0;
+       margin-bottom: 10px;
+}
 }
 
 a {
@@ -43,23 +69,40 @@ a:hover {
     height: 200px;
     object-fit: cover;
     padding: 0.5em;
+    @media (max-width: 992px) {
+     width: 100%;
+     height: 150px;
+    }
 }
 
   
 .hotelTitle {
     margin-top: 1em;
+    @media (max-width: 992px) {
+     font-size: 20px;
+     width: 100%;
+     text-align: center;
+     margin-top: 0.5em;
+    }
 }
   
 .middle {
     margin-left: 2em;
     flex: 22 1 auto;
     text-align: left;
+    @media (max-width: 992px) {
+     margin-left: 0;
+    }
 }
   
 
 .hotelPrice {
     flex: 0.5 1 auto;
     align-self:flex-end;
+    @media (max-width: 992px) {
+    font-size: 14px;
+    text-align: center;
+    }
 }
   
   
@@ -67,9 +110,16 @@ a:hover {
     color: green;
     font-weight: bold;
     font-size: 20px;
+    @media (max-width: 992px) {
+     font-size: 16px;
+    }
 }
 
 .stars {
     margin-top: 20px;
+    @media (max-width: 992px) {
+     font-size: 18px;
+     text-align: center;
+    }
 }
 

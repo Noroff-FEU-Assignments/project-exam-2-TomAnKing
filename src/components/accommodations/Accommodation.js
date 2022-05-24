@@ -2,8 +2,8 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { DateRange } from "react-date-range";
-import "react-date-range/dist/styles.css"; // main css file
-import "react-date-range/dist/theme/default.css"; // theme css file
+import "react-date-range/dist/styles.css";
+import "react-date-range/dist/theme/default.css";
 import BookingModal from "./BookingModal";
 
 function Accommodation() {
@@ -131,32 +131,43 @@ function Accommodation() {
       </div>
       <div className="container">
         <div className="hotel-detail">
-          <h1>{hotel.title.rendered}</h1>
-          <div className="hotelDetailImages">
-            <img
-              onClick={handleClick}
-              className="hotelDetailImg"
-              id="test"
-              src={hotel.acf.image}
-            />
-            <img
-              onClick={handleClick}
-              className="testImg"
-              src={hotel.acf.modal_image_1}
-            />
-            <img
-              onClick={handleClick}
-              className="testImg2"
-              src={hotel.acf.modal_image_2}
-            />
+          <div className="testGrid">
+            <div className="gridTest">
+              <div className="hotelDetailImages">
+                <img
+                  onClick={handleClick}
+                  className="hotelDetailImg"
+                  id="test"
+                  src={hotel.acf.image}
+                />
+                <img
+                  onClick={handleClick}
+                  className="testImg"
+                  src={hotel.acf.modal_image_1}
+                />
+                <img
+                  onClick={handleClick}
+                  className="testImg2"
+                  src={hotel.acf.modal_image_2}
+                />
+              </div>
+            </div>
+            <div className="gridTest rightGrid">
+              <h1 className="detailTitle">{hotel.title.rendered}</h1>
+              <p className="detailPrice">
+                <span className="priceSpan">${hotel.acf.price}</span> Per Night
+              </p>
+              <div className="datePicker">{datepicker}</div>
+              <button className="bookingBtn" onClick={() => setModalShow(true)}>
+                Book
+              </button>
+            </div>
           </div>
-          <p>${hotel.acf.price}</p>
-          {datepicker}
-          <div dangerouslySetInnerHTML={createMarkup()} />
+          <div
+            dangerouslySetInnerHTML={createMarkup()}
+            className="detailText"
+          />
         </div>
-        <button variant="primary" onClick={() => setModalShow(true)}>
-          Book
-        </button>
 
         <BookingModal
           show={modalShow}

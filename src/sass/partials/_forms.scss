@@ -19,12 +19,21 @@
     width: 60%;
     margin: auto;
     min-height: 60vh;
-    padding: 2em;
+    padding: 1em;
+    margin-top: 2em;
+    border-radius: 1em;
 }
 
 .formBtn {
-    width: 50%;
     display: block;
     margin: auto;
-    margin-top: 1em;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    border: none;
+    background-color: blue;
+    color: white;
+    padding: 0.5em 6em;
+    border-radius: 2em;
+    font-size: 20px;
+    text-align: center;
 }
