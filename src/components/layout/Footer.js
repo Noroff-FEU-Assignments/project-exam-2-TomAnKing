@@ -20,7 +20,7 @@ function Footer() {
           <i className="fab fa-twitter" id="twitter"></i>
         </div>
         <div id="footerEmail">holidaze@gmail.com</div>
-        <div id="footerCopyright">Copyright 2021</div>
+        <div id="footerCopyright">Copyright 2022</div>
       </div>
     </div>
   );

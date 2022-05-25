@@ -106,3 +106,100 @@
 .searchedHotel .hotelTitle {
     margin-top: 0.2em;
 }
+
+.infoCard {
+    padding-top: 2em;
+    width: 90%;
+    margin: auto;
+    @media (max-width: 992px) {
+        width: 100%;
+       }
+}
+
+.standardsHeading {
+    margin-top: 1em;
+}
+
+.accommodationStandards {
+    margin-top: 1em;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 1fr 1fr;
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey; 
+    padding: 0.5em;
+    @media (max-width: 992px) {
+        grid-template-columns: 1fr;
+       }
+}
+
+.standardsIcon {
+    float: left;
+    font-size: 25px;
+    padding: 0.5em;
+}
+
+
+.standardsItem > h4 {
+    font-size: 20px;
+    margin: 0;
+    padding-left: 2.5em;
+}
+
+.standardsItem > p {
+    font-size: 16px;
+    padding-left: 3em;
+}
+
+.featuredAccommodations {
+    display: grid;
+    width: 98%;
+    margin: auto;
+    grid-gap: 10px;
+    grid-template-columns: 1fr 1fr 1fr;
+    @media (max-width: 992px) {
+        grid-template-columns: 1fr;
+       }
+}
+
+.featuredItem  {
+    display: block;
+    margin: auto;
+    margin-top: 2px;
+    text-align: center;
+    margin-top: 1em;
+    border: 1px solid grey;
+}
+
+.featuredItem > img {
+    width: 100%;
+}
+
+.featuredItem .middle {
+    text-align: center;
+    display: block;
+}
+
+.featuredContainer {
+    width: 90%;
+    margin: auto;
+    margin-top: 1em;
+    padding-bottom: 2em;
+}
+
+.allBtn {
+    background-color: blue;
+    padding: 1em 2em;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 300px;
+    margin: auto;
+    border-radius: 2em;
+    margin-top: 1em;
+}
+
+.allBtn:hover {
+    color: white;
+}

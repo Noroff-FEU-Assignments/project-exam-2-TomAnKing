@@ -1,5 +1,6 @@
 .hotels {
     margin-top: 40px;
+    margin-bottom: 40px;
 }
   
 .searchHotel {
@@ -41,9 +42,10 @@
 }
   
 .hotel {
-   background-color: #fef;
+   //background-color: #fef;
+   border-top: 1px solid grey;
    width: 80%;
-   margin-bottom: 15px;
+   //margin-bottom: 15px;
    display: flex;
    flex-direction: row;
    margin-left: 20%;
@@ -53,6 +55,12 @@
        margin: 0;
        margin-bottom: 10px;
 }
+}
+
+.hotel:hover {
+    opacity: 0.8;
+   border-top: 1px solid black;
+
 }
 
 a {
