@@ -17,10 +17,14 @@
 }
 
 .navbar-light .navbar-nav .nav-link.active{
-    color: red !important;
+    color: red;
     @media (max-width: 992px) {
         background-color: grey;
        }
+}
+
+.signOut{
+    color: inherit !important;
 }
 
 

@@ -1,4 +1,36 @@
-function DisplayMessages({ messages }) {
+import axios from "axios";
+import { useEffect, useState } from "react";
+
+function DisplayMessages() {
+  const [messages, setMessage] = useState([]);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(function () {
+    getMessages();
+
+    async function getMessages() {
+      try {
+        const response = await axios.get(
+          "https://holidaze.tomanking.one/wp-json/wp/v2/messages"
+        );
+        setMessage(response.data);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    }
+  }, []);
+
+  if (loading) {
+    return <div className="container">Loading...</div>;
+  }
+
+  if (error) {
+    return <div className="container">Failed to load accommodations</div>;
+  }
+
   return (
     <div className="container">
       <h1>Messages</h1>

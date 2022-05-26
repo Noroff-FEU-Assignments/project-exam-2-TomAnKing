@@ -9,7 +9,6 @@ import {
 import Home from "../home/Home";
 import Contact from "../contact/Contact";
 import Accommodations from "../accommodations/Accommodations";
-import Signin from "../signin/Signin";
 import Admin from "../admin/Admin";
 import FetchHotels, { FetchMessages } from "../../config/FetchHotels";
 import Accommodation from "../accommodations/Accommodation";
@@ -23,8 +22,8 @@ import SigninForm from "../forms/SigninForm";
 function Layout() {
   let [auth, setAuth] = useState(null);
 
-  const hotel = FetchHotels();
-  const message = FetchMessages();
+  const hotel = FetchHotels().hotel;
+  const hotelError = FetchHotels().error;
 
   if (localStorage.getItem("auth")) {
     auth = localStorage.getItem("auth");
@@ -66,7 +65,7 @@ function Layout() {
                   <NavLink className="nav-link" to="/admin">
                     Admin
                   </NavLink>
-                  <NavLink className="nav-link" to="/" onClick={logOut}>
+                  <NavLink className="nav-link signOut" to="/" onClick={logOut}>
                     Sign Out
                   </NavLink>
                 </>
@@ -83,7 +82,7 @@ function Layout() {
           <Route path="/contact" element={<Contact />} />
           <Route
             path="/accommodations"
-            element={<Accommodations hotels={hotel} />}
+            element={<Accommodations hotels={hotel} error={hotelError} />}
           />
           <Route
             path="/signin"
@@ -92,10 +91,7 @@ function Layout() {
           <Route path="/admin" element={<Admin />} />
           <Route path="/accommodations/:id" element={<Accommodation />} />
           <Route path="/admin/add-hotel" element={<AddHotel />} />
-          <Route
-            path="/admin/messages"
-            element={<DisplayMessages messages={message} />}
-          />
+          <Route path="/admin/messages" element={<DisplayMessages />} />
           <Route path="/admin/enquiries" element={<DisplayEnquiries />} />
         </Routes>
       </div>

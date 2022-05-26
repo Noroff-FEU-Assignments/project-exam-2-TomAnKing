@@ -52,6 +52,10 @@ class Accommodations extends React.Component {
         ? this.state.hotels
         : this.props.hotels;
 
+    if (!this.props.hotels.length && !this.props.error) {
+      return <div className="container">loading .....</div>;
+    }
+
     return (
       <>
         <div className="container">
@@ -81,6 +85,19 @@ class Accommodations extends React.Component {
                 <option value="stars descend">Stars High-Low</option>
               </select>
             </div>
+            {this.props.error ? (
+              <p className="emptySearch"> Failed to load</p>
+            ) : (
+              <></>
+            )}
+            <p
+              className="emptySearch"
+              style={{
+                display: hotels.length || this.props.error ? "none" : "block",
+              }}
+            >
+              No accommodations matched your search
+            </p>
             {hotels.map((hotel) => {
               return (
                 <Link to={`${hotel.id}`} key={hotel.id}>

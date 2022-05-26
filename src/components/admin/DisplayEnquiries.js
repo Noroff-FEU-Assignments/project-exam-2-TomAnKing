@@ -1,7 +1,35 @@
-import { FetchEnquiries } from "../../config/FetchHotels";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 function DisplayEnquiries() {
-  const enquiries = FetchEnquiries();
+  const [enquiries, setEnquiry] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  useEffect(function () {
+    getEnquiries();
+
+    async function getEnquiries() {
+      try {
+        const response = await axios.get(
+          "https://holidaze.tomanking.one/wp-json/wp/v2/enquiries"
+        );
+        setEnquiry(response.data);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    }
+  }, []);
+
+  if (loading) {
+    return <div className="container">Loading...</div>;
+  }
+
+  if (error) {
+    return <div className="container">An error occured</div>;
+  }
+
   return (
     <div className="container">
       <h1>Enquiries</h1>

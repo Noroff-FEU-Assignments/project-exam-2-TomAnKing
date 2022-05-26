@@ -53,7 +53,7 @@ function Accommodation() {
   }
 
   if (error) {
-    return <div className="container">An error occured: {error}</div>;
+    return <div className="container">An error occured</div>;
   }
 
   function createMarkup() {
