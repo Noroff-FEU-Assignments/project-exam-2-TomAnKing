@@ -168,7 +168,11 @@
     margin-top: 2px;
     text-align: center;
     margin-top: 1em;
-    border: 1px solid grey;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.featuredItem:hover {
+    opacity: 0.8;
 }
 
 .featuredItem > img {
@@ -178,6 +182,7 @@
 .featuredItem .middle {
     text-align: center;
     display: block;
+    margin: 0;
 }
 
 .featuredContainer {

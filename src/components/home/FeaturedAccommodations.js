@@ -4,7 +4,7 @@ import AccommodationItem from "../accommodations/AccommodationItem";
 function FeaturedAccommotadions({ hotels }) {
   return (
     <div className="featuredContainer">
-      <h3>test</h3>
+      <h3>Recently added accommodations</h3>
       <div className="featuredAccommodations">
         {hotels.slice(0, 3).map((hotel) => {
           return (
