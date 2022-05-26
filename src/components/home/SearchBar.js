@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import AccommodationItem from "../accommodations/AccommodationItem";
 
 function SearchBar({ placeholder, hotels }) {
-  const [filteredData, setFilteredData] = useState([]);
+  const [filteredHotels, setFilteredHotels] = useState([]);
   const [wordEntered, setWordEntered] = useState("");
 
   const handleFilter = (event) => {
@@ -16,9 +16,9 @@ function SearchBar({ placeholder, hotels }) {
     });
 
     if (searchWord === "") {
-      setFilteredData([]);
+      setFilteredHotels([]);
     } else {
-      setFilteredData(newFilter);
+      setFilteredHotels(newFilter);
     }
   };
 
@@ -33,9 +33,9 @@ function SearchBar({ placeholder, hotels }) {
           onChange={handleFilter}
         />
       </div>
-      {filteredData.length != 0 && (
+      {filteredHotels.length != 0 && (
         <div className="dataResult">
-          {filteredData.map((value) => {
+          {filteredHotels.map((value) => {
             return (
               <Link to={`accommodations/${value.id}`} key={value.id}>
                 <AccommodationItem hotel={value} style={"searchedHotel"} />

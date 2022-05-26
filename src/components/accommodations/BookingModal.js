@@ -34,8 +34,8 @@ const schema = yup.object().shape({
 });
 
 export default function BookingModal(props) {
-  const [submitting, setSubmitting] = useState(false);
-  const [serverError, setServerError] = useState(null);
+  const [, setSubmitting] = useState(false);
+  const [, setServerError] = useState(null);
   const [token, setToken] = useState(null);
   const [booked, setBooked] = useState(false);
 
@@ -69,21 +69,12 @@ export default function BookingModal(props) {
     setServerError(null);
 
     data.status = "publish";
-
     data.fields.from_date = props.datepicker.startDate;
-
     data.fields.to_date = props.datepicker.endDate;
-
     data.title = props.title;
 
-    console.log(data);
-
     try {
-      const response = await http.post("wp/v2/enquiries", data);
-
-      //register("fields.to_date", { value: datepicker.props.ranges[0].endDate });
-
-      // console.log("response", response.data);
+      await http.post("wp/v2/enquiries", data);
     } catch (error) {
       console.log("error", error);
       setServerError(error.toString());

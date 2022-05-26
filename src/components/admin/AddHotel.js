@@ -98,7 +98,6 @@ export default function AddHotel() {
             <input name="title2" {...register("title")} className="formInput" />
             {errors.title && <FormError>{errors.title.message}</FormError>}
           </div>
-
           <div>
             <label className="formLabel">Content</label>
             <textarea
@@ -110,7 +109,6 @@ export default function AddHotel() {
           </div>
           <div>
             <label className="formLabel">Price</label>
-
             <input
               name="price"
               {...register("fields.price")}
@@ -146,7 +144,6 @@ export default function AddHotel() {
           </div>
           <div>
             <label className="formLabel">Main Image</label>
-
             <input
               name="stars"
               className="formInput"
@@ -158,7 +155,6 @@ export default function AddHotel() {
           </div>
           <div>
             <label className="formLabel">Gallery Image 1</label>
-
             <input
               name="stars"
               className="formInput"
@@ -170,7 +166,6 @@ export default function AddHotel() {
           </div>
           <div>
             <label className="formLabel">Gallery Image 2</label>
-
             <input
               name="stars"
               className="formInput"

@@ -19,33 +19,18 @@ function ModalGalery() {
     });
   });
 
-  const closeButton = document.querySelector("[data-close-button]");
   const modal = document.querySelector(".carousel");
-
-  /*   closeButton.addEventListener("click", () => {
-    modal.style.display = "none";
-  }); */
-
-  /*   closeButton.onclick = function () {
-    modal.style.display = "none";
-  }; */
-
-  /*  if (closeButton) {
-    closeButton.addEventListener("click", () => {
-      modal.style.display = "none";
-    });
-  } */
 
   let styles = {
     display: "none",
   };
 
-  function test() {
+  function hideModal() {
     modal = styles;
   }
   return (
     <div className="carousel" data-carousel>
-      <button onClick={test} className="close" data-carousel-close="close">
+      <button onClick={hideModal} className="close" data-carousel-close="close">
         &times;
       </button>
       <button className="carousel-button prev" data-carousel-button="prev">

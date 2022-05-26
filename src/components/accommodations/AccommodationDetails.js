@@ -6,7 +6,7 @@ import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import BookingModal from "./BookingModal";
 
-function Accommodation() {
+function AccommodationDetails() {
   const [isActive, setIsActive] = useState(false);
   const [hotel, setHotel] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -95,7 +95,6 @@ function Accommodation() {
     />
   );
   const handleClick = () => {
-    console.log(datepicker.props.ranges[0].endDate);
     setIsActive((current) => !current);
   };
 
@@ -184,4 +183,4 @@ function Accommodation() {
   );
 }
 
-export default Accommodation;
+export default AccommodationDetails;

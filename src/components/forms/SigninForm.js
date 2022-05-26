@@ -15,7 +15,7 @@ const schema = yup.object().shape({
   password: yup.string().required("Please enter your password"),
 });
 
-export default function LoginForm({ handleClick }) {
+export default function LoginForm({ signIn }) {
   const [submitting, setSubmitting] = useState(false);
   const [loginError, setLoginError] = useState(null);
 
@@ -47,7 +47,7 @@ export default function LoginForm({ handleClick }) {
       setLoginError("Wrong username or password");
     } finally {
       setSubmitting(false);
-      handleClick();
+      signIn();
     }
   }
   return (
