@@ -28,7 +28,7 @@ function AccommodationDetails() {
     navigate.push("/");
   }
 
-  const url = "https://holidaze.tomanking.one/wp-json/wp/v2/hotels" + "/" + id;
+  const url = "https://holidaze.tomanking.one/wp-json/wp/v2/hotels/" + id;
 
   useEffect(
     function () {

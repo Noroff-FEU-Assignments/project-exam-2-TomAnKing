@@ -22,8 +22,8 @@ const schema = yup.object().shape({
 });
 
 export default function ContactForm() {
-  const [submitting, setSubmitting] = useState(false);
-  const [serverError, setServerError] = useState(null);
+  const [, setSubmitting] = useState(false);
+  const [, setServerError] = useState(null);
   const [token, setToken] = useState(null);
   const [thanks, showThanks] = useState(false);
 

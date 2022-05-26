@@ -40,6 +40,8 @@ class Accommodations extends React.Component {
       case "stars descend":
         hotels.sort((a, b) => (a.acf.stars < b.acf.stars ? 1 : -1));
         break;
+      default:
+        hotels.sort((a, b) => (a.acf.price > b.acf.price ? 1 : -1));
     }
 
     this.setState({
@@ -55,6 +57,8 @@ class Accommodations extends React.Component {
     if (!this.props.hotels.length && !this.props.error) {
       return <div className="container">loading .....</div>;
     }
+
+    const style = "hotel";
 
     return (
       <>
@@ -101,7 +105,7 @@ class Accommodations extends React.Component {
             {hotels.map((hotel) => {
               return (
                 <Link to={`${hotel.id}`} key={hotel.id}>
-                  <AccommodationItem hotel={hotel} style={"hotel"} />
+                  <AccommodationItem hotel={hotel} style={style} />
                 </Link>
               );
             })}

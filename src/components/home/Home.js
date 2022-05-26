@@ -9,7 +9,7 @@ function Home({ hotels }) {
     <>
       <div className="headerContainer">
         <h1 className="headerText">Welcome To Holidaze</h1>
-        <img src={headerImage} className="headerImg" alt="picture of bergen" />
+        <img src={headerImage} className="headerImg" alt="bergen" />
         <SearchBar placeholder="Searh accommodations" hotels={hotels} />
       </div>
       <div className="container">

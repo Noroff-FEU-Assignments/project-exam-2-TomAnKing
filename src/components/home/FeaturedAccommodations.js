@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import AccommodationItem from "../accommodations/AccommodationItem";
 
 function FeaturedAccommotadions({ hotels }) {
+  const style = "featuredItem";
   return (
     <div className="featuredContainer">
       <h3>Recently added accommodations</h3>
@@ -9,7 +10,7 @@ function FeaturedAccommotadions({ hotels }) {
         {hotels.slice(0, 3).map((hotel) => {
           return (
             <Link to={`accommodations/${hotel.id}`} key={hotel.id}>
-              <AccommodationItem hotel={hotel} style={"featuredItem"} />
+              <AccommodationItem hotel={hotel} style={style} />
             </Link>
           );
         })}

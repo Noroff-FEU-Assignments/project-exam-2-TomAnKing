@@ -3,7 +3,7 @@ import Home from "../home/Home";
 import ContactForm from "../forms/ContactForm";
 import Accommodations from "../accommodations/Accommodations";
 import Admin from "../admin/Admin";
-import FetchHotels, { FetchMessages } from "../../config/FetchHotels";
+import FetchHotels from "../../config/FetchHotels";
 import AccommodationDetails from "../accommodations/AccommodationDetails";
 import Footer from "./Footer";
 import AddHotel from "../admin/AddHotel";

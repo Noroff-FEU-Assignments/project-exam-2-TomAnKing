@@ -6,6 +6,8 @@ function SearchBar({ placeholder, hotels }) {
   const [filteredHotels, setFilteredHotels] = useState([]);
   const [wordEntered, setWordEntered] = useState("");
 
+  const style = "searchedHotel";
+
   const handleFilter = (event) => {
     const searchWord = event.target.value;
     setWordEntered(searchWord);
@@ -33,12 +35,12 @@ function SearchBar({ placeholder, hotels }) {
           onChange={handleFilter}
         />
       </div>
-      {filteredHotels.length != 0 && (
+      {filteredHotels.length !== 0 && (
         <div className="dataResult">
           {filteredHotels.map((value) => {
             return (
               <Link to={`accommodations/${value.id}`} key={value.id}>
-                <AccommodationItem hotel={value} style={"searchedHotel"} />
+                <AccommodationItem hotel={value} style={style} />
               </Link>
             );
           })}
