@@ -71,10 +71,10 @@ export default function AddHotel() {
       await http.post("wp/v2/hotels", data);
     } catch (error) {
       console.log("error", error);
-      setServerError(error.toString());
+      setServerError(error.toString(""));
     } finally {
       setSubmitting(false);
-      window.location.reload(false);
+      /* window.location.reload(false); */
     }
   }
 
@@ -120,6 +120,15 @@ export default function AddHotel() {
               maxLength={1}
             />
             {errors.stars && <FormError>{errors.stars.message}</FormError>}
+          </div>
+          <div>
+            <label className="formLabel">Address</label>
+            <input
+              name="title2"
+              {...register("fields.address")}
+              className="formInput"
+            />
+            {errors.title && <FormError>{errors.title.message}</FormError>}
           </div>
           <div>
             <label className="formLabel">Main Image</label>

@@ -157,6 +157,10 @@ function Accommodation() {
               <p className="detailPrice">
                 <span className="priceSpan">${hotel.acf.price}</span> Per Night
               </p>
+              <div className="detailAddress">
+                <i className="fas fa-map-pin"></i>
+                <p>{hotel.acf.address}</p>
+              </div>
               <div className="datePicker">{datepicker}</div>
               <button className="bookingBtn" onClick={() => setModalShow(true)}>
                 Book

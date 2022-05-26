@@ -27,7 +27,7 @@ function Layout() {
       <div>
         <Navbar bg="light" expand="lg" className="navBar">
           <Navbar.Brand className="navBrand">
-            <NavLink to="/" className="nav-link">
+            <NavLink to="/" className="nav-brand">
               Holidaze
             </NavLink>
           </Navbar.Brand>

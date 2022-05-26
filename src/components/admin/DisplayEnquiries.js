@@ -15,8 +15,10 @@ function DisplayEnquiries() {
               <p>{enquiry.acf.card_name}</p>
               <h3 className="messageLabel">Card Number:</h3>
               <p>{enquiry.acf.card_number}</p>
-              <h3 className="messageLabel">expiration date:</h3>
-              <p>{enquiry.acf.expiration_date}</p>
+              <h3 className="messageLabel">Expiration date:</h3>
+              <p>
+                {enquiry.acf.expiration_month} / {enquiry.acf.expiration_year}
+              </p>
               <h3 className="messageLabel">Booking Dates</h3>
               <p>
                 From: {new Date(enquiry.acf.from_date).toLocaleDateString()}

@@ -31,7 +31,7 @@ export default function BookingModal(props) {
   const [serverError, setServerError] = useState(null);
 
   const token =
-    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvaG9saWRhemUudG9tYW5raW5nLm9uZSIsImlhdCI6MTY1Mjg5MzAzNywibmJmIjoxNjUyODkzMDM3LCJleHAiOjE2NTM0OTc4MzcsImRhdGEiOnsidXNlciI6eyJpZCI6IjEifX19.kdIl-g2zoSvSZpA41z7gH0aKRCXSfzoehQx-Tr-zc28";
+    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvaG9saWRhemUudG9tYW5raW5nLm9uZSIsImlhdCI6MTY1MzU2MDQwMCwibmJmIjoxNjUzNTYwNDAwLCJleHAiOjE2NTQxNjUyMDAsImRhdGEiOnsidXNlciI6eyJpZCI6IjEifX19.c4HsfyUvs3g6wp9q1xSibgeCnyHsMGzcjNvIAR-bIyc";
   const http = useAxios(token);
 
   const { register, handleSubmit } = useForm({});
@@ -92,16 +92,16 @@ export default function BookingModal(props) {
           )} */}
           <label className="formLabel">Expiration date</label>
           <input
-            {...register("fields.expiration_date")}
-            className="formInput"
+            {...register("fields.expiration_month")}
+            className="formInput expDate"
             placeholder="00"
             maxLength={2}
             type="number"
           />
           /
           <input
-            {...register("fields.expiration_date")}
-            className="formInput"
+            {...register("fields.expiration_year")}
+            className="formInput expDate month"
             placeholder="00"
             maxLength={2}
             type="number"
@@ -112,7 +112,7 @@ export default function BookingModal(props) {
           <label className="formLabel">Security Code</label>
           <input
             {...register("fields.security_code")}
-            className="formInput"
+            className="formInput securityCode"
             placeholder="000"
             maxLength={3}
             type="number"

@@ -1,0 +1,31 @@
+.nav-brand {
+    font-size: 26px;
+    margin-left: 2em;
+    @media (max-width: 992px) {
+      text-align: center;
+      margin-left: 1em;
+       }
+}
+
+.ms-auto {
+    margin-right: 2em;
+    font-size: 18px;
+    @media (max-width: 992px) {
+        text-align: center;
+        width: 100%;
+       }
+}
+
+.navbar-light .navbar-nav .nav-link.active{
+    color: red !important;
+    @media (max-width: 992px) {
+        background-color: grey;
+       }
+}
+
+
+
+
+.ms-auto .active {
+    color: blue;
+}
