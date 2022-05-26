@@ -1,6 +1,7 @@
 import axios from "axios";
+import { BASE_URL } from "../constants/api";
 
-const url = process.env.REACT_APP_BASE_URL;
+const url = BASE_URL;
 
 export default function useAxios(token) {
   const apiClient = axios.create({
