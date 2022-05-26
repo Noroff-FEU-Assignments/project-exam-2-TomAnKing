@@ -1,4 +1,4 @@
-export default function AccommodationItem({ hotel, style }) {
+export default function AccommodationItem({ hotel, styling }) {
   const starsArray = [
     <p></p>,
     <p>&#x2605;</p>,
@@ -9,7 +9,7 @@ export default function AccommodationItem({ hotel, style }) {
   ];
 
   return (
-    <div className={style}>
+    <div className={styling}>
       <img
         className="hotelImg"
         src={hotel.acf.image}

@@ -40,7 +40,7 @@ function SearchBar({ placeholder, hotels }) {
           {filteredHotels.map((value) => {
             return (
               <Link to={`accommodations/${value.id}`} key={value.id}>
-                <AccommodationItem hotel={value} style={style} />
+                <AccommodationItem hotel={value} styling={style} />
               </Link>
             );
           })}

@@ -10,7 +10,7 @@ function FeaturedAccommotadions({ hotels }) {
         {hotels.slice(0, 3).map((hotel) => {
           return (
             <Link to={`accommodations/${hotel.id}`} key={hotel.id}>
-              <AccommodationItem hotel={hotel} style={style} />
+              <AccommodationItem hotel={hotel} styling={style} />
             </Link>
           );
         })}

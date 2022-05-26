@@ -105,7 +105,7 @@ class Accommodations extends React.Component {
             {hotels.map((hotel) => {
               return (
                 <Link to={`${hotel.id}`} key={hotel.id}>
-                  <AccommodationItem hotel={hotel} style={style} />
+                  <AccommodationItem hotel={hotel} styling={style} />
                 </Link>
               );
             })}
