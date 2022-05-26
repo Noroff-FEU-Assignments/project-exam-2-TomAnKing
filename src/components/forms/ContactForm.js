@@ -2,13 +2,38 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import useAxios from "../../hooks/useAxios";
 import axios from "axios";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import FormError from "./FormError";
+
+const schema = yup.object().shape({
+  fields: yup.object().shape({
+    first_name: yup.string().required("Please enter your first name"),
+    last_name: yup.string().required("Please enter your last name"),
+    email: yup
+      .string()
+      .email("Please enter a valid email")
+      .required("Please enter your email"),
+    message: yup
+      .string()
+      .max(300, "Message must be under 300 characters")
+      .required("Please enter your message"),
+  }),
+});
 
 export default function ContactForm() {
   const [submitting, setSubmitting] = useState(false);
   const [serverError, setServerError] = useState(null);
   const [token, setToken] = useState(null);
+  const [thanks, showThanks] = useState(false);
 
-  const { register, handleSubmit } = useForm({});
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
 
   getToken();
 
@@ -42,27 +67,57 @@ export default function ContactForm() {
       setServerError(error.toString());
     } finally {
       setSubmitting(false);
+      showThanks(true);
     }
   }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="form">
       <h1>Contact</h1>
-      <label className="formLabel">First Name</label>
-      <input {...register("fields.first_name")} className="formInput" />
+      <h2 style={{ display: thanks ? "block" : "none" }}>
+        Thanks for contacting us
+      </h2>
 
-      <label className="formLabel">Last Name</label>
-      <input {...register("fields.last_name")} className="formInput" />
-
-      <label className="formLabel">Email</label>
-      <input {...register("fields.email")} className="formInput" />
-
-      <label className="formLabel">Message</label>
-      <textarea
-        rows={10}
-        {...register("fields.message")}
-        className="formInput"
-      />
+      <div>
+        <label className="formLabel">First Name</label>
+        <input
+          name="ddd"
+          {...register("fields.first_name")}
+          className="formInput"
+        />
+        {errors.fields?.first_name?.message && (
+          <FormError>{errors.fields?.first_name.message}</FormError>
+        )}
+      </div>
+      <div>
+        <label className="formLabel">Last Name</label>
+        <input
+          name="ddd"
+          {...register("fields.last_name")}
+          className="formInput"
+        />
+        {errors.fields?.last_name?.message && (
+          <FormError>{errors.fields?.last_name.message}</FormError>
+        )}
+      </div>
+      <div>
+        <label className="formLabel">Email</label>
+        <input name="ddd" {...register("fields.email")} className="formInput" />
+        {errors.fields?.email?.message && (
+          <FormError>{errors.fields?.email.message}</FormError>
+        )}
+      </div>
+      <div>
+        <label className="formLabel">Message</label>
+        <textarea
+          rows={10}
+          {...register("fields.message")}
+          className="formInput"
+        />
+        {errors.fields?.message?.message && (
+          <FormError>{errors.fields?.message.message}</FormError>
+        )}
+      </div>
 
       <button className="formBtn">Contact</button>
     </form>

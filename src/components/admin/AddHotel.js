@@ -9,8 +9,17 @@ import axios from "axios";
 const schema = yup.object().shape({
   title: yup.string().required("Title is required"),
   content: yup.string().required("Content is required"),
-  /*   price: yup.number().required("Add price"),
-  stars: yup.number().required("Add stars"), */
+  fields: yup.object().shape({
+    price: yup.string().required("Please enter cardholders name"),
+    stars: yup
+      .number("Stars")
+      .typeError("Please enter stars")
+      .min(1, "Minimum 1 star")
+      .max(5, "Maximum 5 stars")
+      .required("Please enter stars"),
+
+    address: yup.string().required("Please enter address"),
+  }),
 });
 
 export default function AddHotel() {
@@ -74,7 +83,7 @@ export default function AddHotel() {
       setServerError(error.toString(""));
     } finally {
       setSubmitting(false);
-      /* window.location.reload(false); */
+      window.location.reload(false);
     }
   }
 
@@ -108,7 +117,9 @@ export default function AddHotel() {
               className="formInput"
               type="number"
             />
-            {errors.price && <FormError>{errors.price.message}</FormError>}
+            {errors.fields?.price && (
+              <FormError>{errors.fields?.price?.message}</FormError>
+            )}
           </div>
           <div>
             <label className="formLabel">Stars</label>
@@ -117,9 +128,10 @@ export default function AddHotel() {
               {...register("fields.stars")}
               className="formInput"
               type="number"
-              maxLength={1}
             />
-            {errors.stars && <FormError>{errors.stars.message}</FormError>}
+            {errors.fields?.stars && (
+              <FormError>{errors.fields?.stars?.message}</FormError>
+            )}
           </div>
           <div>
             <label className="formLabel">Address</label>
@@ -128,7 +140,9 @@ export default function AddHotel() {
               {...register("fields.address")}
               className="formInput"
             />
-            {errors.title && <FormError>{errors.title.message}</FormError>}
+            {errors.fields?.address && (
+              <FormError>{errors.fields?.address?.message}</FormError>
+            )}
           </div>
           <div>
             <label className="formLabel">Main Image</label>

@@ -7,30 +7,45 @@ import { useState } from "react";
 import useAxios from "../../hooks/useAxios";
 import axios from "axios";
 
-/* const schema = yup.object().shape({
-  name: yup
-    .string()
-    .required("Please enter your name")
-    .min(3, "Your name must contain at least 3 characters"),
-  cardnumber: yup
-    .number()
-    .required("Please enter your last name")
-    .typeError("Card number must be a number"),
-  expirydate: yup
-    .number()
-    .required("Please enter your expiry date")
-    .typeError("Expiry date must be a number"),
-  securitycode: yup
-    .number()
-    .required("Please enter your message")
-    .min(3, "The security code must be 3 characters")
-    .typeError("Security code must be a number"),
-}); */
+const schema = yup.object().shape({
+  fields: yup.object().shape({
+    card_name: yup.string().required("Please enter cardholders name"),
+    card_number: yup
+      .string()
+      .min(16, "Card number must be 16 digits")
+      .max(16, "Card number must be 16 digits")
+      .required("Please enter cardholders name"),
+    expiration_month: yup
+      .string()
+      .min(1, "Enter expiration month")
+      .max(2, "Invalid month")
+      .required("Enter expiration month"),
+    expiration_year: yup
+      .string()
+      .min(2, "Enter expiration year")
+      .max(2, "Invalid year")
+      .required(""),
+    security_code: yup
+      .string()
+      .min(3, "Security code must be 3 digits")
+      .max(3, "Security code must be 3 digits")
+      .required("Please enter your security code"),
+  }),
+});
 
 export default function BookingModal(props) {
   const [submitting, setSubmitting] = useState(false);
   const [serverError, setServerError] = useState(null);
   const [token, setToken] = useState(null);
+  const [booked, setBooked] = useState(false);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
 
   getToken();
 
@@ -48,8 +63,6 @@ export default function BookingModal(props) {
   }
 
   const http = useAxios(token);
-
-  const { register, handleSubmit } = useForm({});
 
   async function onSubmit(data) {
     setSubmitting(true);
@@ -76,6 +89,7 @@ export default function BookingModal(props) {
       setServerError(error.toString());
     } finally {
       setSubmitting(false);
+      setBooked(true);
     }
   }
 
@@ -90,10 +104,15 @@ export default function BookingModal(props) {
         <Modal.Title id="contained-modal-title-vcenter">Booking</Modal.Title>
       </Modal.Header>
       <Modal.Body>
+        <h2 style={{ display: booked ? "block" : "none" }}>
+          Thank you for your booking
+        </h2>
         <form onSubmit={handleSubmit(onSubmit)} className="">
           <label className="formLabel">Name on card</label>
           <input {...register("fields.card_name")} className="formInput" />
-          {/*  {errors.name && <FormError>{errors.name.message}</FormError>} */}
+          {errors.fields?.card_name && (
+            <FormError>{errors.fields?.card_name?.message}</FormError>
+          )}
           <label className="formLabel">Card number</label>
           <input
             {...register("fields.card_number")}
@@ -102,9 +121,9 @@ export default function BookingModal(props) {
             maxLength={16}
             type="number"
           />
-          {/*  {errors.cardnumber && (
-            <FormError>{errors.cardnumber.message}</FormError>
-          )} */}
+          {errors.fields?.card_number && (
+            <FormError>{errors.fields?.card_number?.message}</FormError>
+          )}
           <label className="formLabel">Expiration date</label>
           <input
             {...register("fields.expiration_month")}
@@ -121,9 +140,12 @@ export default function BookingModal(props) {
             maxLength={2}
             type="number"
           />
-          {/*  {errors.expirydate && (
-            <FormError>{errors.expirydate.message}</FormError>
-          )} */}
+          {errors.fields?.expiration_month && (
+            <FormError>{errors.fields?.expiration_month?.message}</FormError>
+          )}
+          {errors.fields?.expiration_year && (
+            <FormError>{errors.fields?.expiration_year?.message}</FormError>
+          )}
           <label className="formLabel">Security Code</label>
           <input
             {...register("fields.security_code")}
@@ -132,9 +154,9 @@ export default function BookingModal(props) {
             maxLength={3}
             type="number"
           />
-          {/* {errors.securitycode && (
-            <FormError>{errors.securitycode.message}</FormError>
-          )} */}
+          {errors.fields?.security_code && (
+            <FormError>{errors.fields?.security_code?.message}</FormError>
+          )}
           <button className="formBtn">Complete Booking</button>
         </form>
       </Modal.Body>
