@@ -10,7 +10,11 @@ export default function AccommodationItem({ hotel, style }) {
 
   return (
     <div className={style}>
-      <img className="hotelImg" src={hotel.acf.image} />
+      <img
+        className="hotelImg"
+        src={hotel.acf.image}
+        alt={hotel.title.rendered}
+      />
       <div className="middle">
         <h2 className="hotelTitle">{hotel.title.rendered}</h2>
         <div className="stars"> {starsArray[hotel.acf.stars]}</div>

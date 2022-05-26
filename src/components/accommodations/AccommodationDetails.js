@@ -118,13 +118,13 @@ function AccommodationDetails() {
         </button>
         <ul data-slides>
           <li className="slide" data-active>
-            <img src={hotel.acf.image} />
+            <img src={hotel.acf.image} alt={hotel.title.rendered} />
           </li>
           <li className="slide">
-            <img src={hotel.acf.modal_image_1} />
+            <img src={hotel.acf.modal_image_1} alt={hotel.title.rendered} />
           </li>
           <li className="slide">
-            <img src={hotel.acf.modal_image_2} />
+            <img src={hotel.acf.modal_image_2} alt={hotel.title.rendered} />
           </li>
         </ul>
       </div>
@@ -138,16 +138,19 @@ function AccommodationDetails() {
                   className="hotelDetailImg"
                   id="test"
                   src={hotel.acf.image}
+                  alt={hotel.title.rendered}
                 />
                 <img
                   onClick={handleClick}
                   className="testImg"
                   src={hotel.acf.modal_image_1}
+                  alt={hotel.title.rendered}
                 />
                 <img
                   onClick={handleClick}
                   className="testImg2"
                   src={hotel.acf.modal_image_2}
+                  alt={hotel.title.rendered}
                 />
               </div>
             </div>
