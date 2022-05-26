@@ -1,24 +1,37 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import useAxios from "../../hooks/useAxios";
+import axios from "axios";
 
 export default function ContactForm() {
   const [submitting, setSubmitting] = useState(false);
   const [serverError, setServerError] = useState(null);
-
-  const token =
-    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvaG9saWRhemUudG9tYW5raW5nLm9uZSIsImlhdCI6MTY1MzU2MDQwMCwibmJmIjoxNjUzNTYwNDAwLCJleHAiOjE2NTQxNjUyMDAsImRhdGEiOnsidXNlciI6eyJpZCI6IjEifX19.c4HsfyUvs3g6wp9q1xSibgeCnyHsMGzcjNvIAR-bIyc";
-  const http = useAxios(token);
+  const [token, setToken] = useState(null);
 
   const { register, handleSubmit } = useForm({});
+
+  getToken();
+
+  async function getToken() {
+    const loginInfo = {
+      username: "admin",
+      password: "password123",
+    };
+    const response = await axios.post(
+      "https://holidaze.tomanking.one/wp-json/jwt-auth/v1/token",
+      loginInfo
+    );
+
+    setToken(response.data.token);
+  }
+
+  const http = useAxios(token);
 
   async function onSubmit(data) {
     setSubmitting(true);
     setServerError(null);
 
     data.status = "publish";
-
-    console.log(data);
 
     try {
       const response = await http.post("wp/v2/messages", data);

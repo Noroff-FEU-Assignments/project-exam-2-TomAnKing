@@ -5,6 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import FormError from "../forms/FormError";
 import { useState } from "react";
 import useAxios from "../../hooks/useAxios";
+import axios from "axios";
 
 /* const schema = yup.object().shape({
   name: yup
@@ -29,9 +30,23 @@ import useAxios from "../../hooks/useAxios";
 export default function BookingModal(props) {
   const [submitting, setSubmitting] = useState(false);
   const [serverError, setServerError] = useState(null);
+  const [token, setToken] = useState(null);
 
-  const token =
-    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvaG9saWRhemUudG9tYW5raW5nLm9uZSIsImlhdCI6MTY1MzU2MDQwMCwibmJmIjoxNjUzNTYwNDAwLCJleHAiOjE2NTQxNjUyMDAsImRhdGEiOnsidXNlciI6eyJpZCI6IjEifX19.c4HsfyUvs3g6wp9q1xSibgeCnyHsMGzcjNvIAR-bIyc";
+  getToken();
+
+  async function getToken() {
+    const loginInfo = {
+      username: "admin",
+      password: "password123",
+    };
+    const response = await axios.post(
+      "https://holidaze.tomanking.one/wp-json/jwt-auth/v1/token",
+      loginInfo
+    );
+
+    setToken(response.data.token);
+  }
+
   const http = useAxios(token);
 
   const { register, handleSubmit } = useForm({});

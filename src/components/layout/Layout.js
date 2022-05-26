@@ -17,10 +17,28 @@ import Footer from "./Footer";
 import AddHotel from "../admin/AddHotel";
 import DisplayMessages from "../admin/DisplayMessages";
 import DisplayEnquiries from "../admin/DisplayEnquiries";
+import { useState } from "react";
+import SigninForm from "../forms/SigninForm";
 
 function Layout() {
+  let [auth, setAuth] = useState(null);
+
   const hotel = FetchHotels();
   const message = FetchMessages();
+
+  if (localStorage.getItem("auth")) {
+    auth = localStorage.getItem("auth");
+  }
+
+  const handleClick = () => {
+    auth = localStorage.getItem("auth");
+    setAuth(auth);
+  };
+
+  function logOut() {
+    localStorage.removeItem("auth");
+    setAuth("");
+  }
 
   return (
     <Router>
@@ -43,9 +61,20 @@ function Layout() {
               <NavLink to="/contact" className="nav-link">
                 Contact
               </NavLink>
-              <NavLink to="/signin" className="nav-link">
-                Sign In
-              </NavLink>
+              {auth ? (
+                <>
+                  <NavLink className="nav-link" to="/admin">
+                    Admin
+                  </NavLink>
+                  <NavLink className="nav-link" to="/" onClick={logOut}>
+                    Sign Out
+                  </NavLink>
+                </>
+              ) : (
+                <NavLink to="/signin" className="nav-link">
+                  Sign In
+                </NavLink>
+              )}
             </Nav>
           </Navbar.Collapse>
         </Navbar>
@@ -56,7 +85,10 @@ function Layout() {
             path="/accommodations"
             element={<Accommodations hotels={hotel} />}
           />
-          <Route path="/signin" element={<Signin />} />
+          <Route
+            path="/signin"
+            element={<SigninForm handleClick={handleClick} />}
+          />
           <Route path="/admin" element={<Admin />} />
           <Route path="/accommodations/:id" element={<Accommodation />} />
           <Route path="/admin/add-hotel" element={<AddHotel />} />

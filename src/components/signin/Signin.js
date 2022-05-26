@@ -1,9 +1,9 @@
 import SigninForm from "../forms/SigninForm";
 
-function Signin() {
+function Signin({ handleClick }) {
   return (
     <div className="container">
-      <SigninForm />
+      <SigninForm handleClick={() => handleClick} />
     </div>
   );
 }
