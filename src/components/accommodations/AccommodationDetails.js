@@ -7,6 +7,7 @@ import "react-date-range/dist/theme/default.css";
 import BookingModal from "./BookingModal";
 import { Link } from "react-router-dom";
 import Head from "../layout/Head";
+import { BASE_URL } from "../../constants/api";
 
 function AccommodationDetails() {
   const [isActive, setIsActive] = useState(false);
@@ -30,7 +31,7 @@ function AccommodationDetails() {
     navigate.push("/");
   }
 
-  const url = "https://holidaze.tomanking.one/wp-json/wp/v2/hotels/" + id;
+  const url = BASE_URL + "wp/v2/hotels/" + id;
 
   useEffect(
     function () {

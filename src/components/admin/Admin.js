@@ -5,7 +5,7 @@ import DisplayEnquiries from "./DisplayEnquiries";
 import DisplayMessages from "./DisplayMessages";
 
 function Admin() {
-  const [content, setContent] = useState("hotel");
+  const [content, setContent] = useState("enquiries");
 
   function handleClick(val) {
     switch (val) {
@@ -19,7 +19,7 @@ function Admin() {
         setContent("enquiries");
         break;
       default:
-        setContent("hotel");
+        setContent("enquiries");
     }
   }
 
@@ -32,7 +32,7 @@ function Admin() {
       case "enquiries":
         return <DisplayEnquiries />;
       default:
-        return <AddHotel />;
+        return <DisplayEnquiries />;
     }
   }
 
@@ -45,9 +45,9 @@ function Admin() {
           className="adminDropdown"
           onChange={(e) => handleClick(e.target.value)}
         >
+          <option value="enquiries">Enquiries</option>
           <option value="hotel">Add Hotel</option>
           <option value="message">Messages</option>
-          <option value="enquiries">Enquiries</option>
         </select>
         <GetContent />
       </div>
