@@ -5,7 +5,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import FormError from "../forms/FormError";
 import useAxios from "../../hooks/useAxios";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import Head from "../layout/Head";
 
 const schema = yup.object().shape({
@@ -93,14 +92,8 @@ export default function AddHotel() {
     <>
       <Head title={"Admin - Add Hotel"} />
       <div className="container">
-        <div className="backBtn">
-          <Link to="/admin">
-            <p>Admin &gt;</p>
-          </Link>
-          <p className="backBtnTitle">Add Hotel</p>
-        </div>
-        <form onSubmit={handleSubmit(onSubmit)} className="form">
-          <h1>Add Hotel</h1>
+        <h1 className="adminContentTitle">Add Hotel</h1>
+        <form onSubmit={handleSubmit(onSubmit)} className="form addHotelForm">
           {serverError && <FormError>{serverError}</FormError>}
           <fieldset disabled={submitting}>
             <div>

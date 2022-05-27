@@ -10,6 +10,8 @@
     display: block;
     margin: auto;
     width: 70%;
+    border: 1px solid grey;
+    border-radius: 0.2em;
     @media (max-width: 992px) {
         width: 90%;
         }
@@ -25,15 +27,15 @@
 }
 
 .form {
-    background-color: lightblue;
     width: 60%;
+    max-width: 800px;
+    border: 1px solid #D3D3D3;
     margin: auto;
-    min-height: 60vh;
     padding: 1em;
     margin-top: 2em;
     padding-top: 2em;
     margin-bottom: 2em;
-    border-radius: 1em;
+    border-radius: 0.5em;
     @media (max-width: 992px) {
       width: 100%;
        }
@@ -45,10 +47,10 @@
     margin-top: 2em;
     margin-bottom: 2em;
     border: none;
-    background-color: blue;
+    background-color: #2B7EFF;
     color: white;
-    padding: 0.5em 6em;
-    border-radius: 2em;
+    padding: 0.5em 2em;
+    border-radius: 0.5em;
     font-size: 20px;
     text-align: center;
     @media (max-width: 992px) {
@@ -90,4 +92,9 @@
 .formMessage {
     color: green;
     text-align: center;
+}
+
+.addHotelForm {
+    width: 100%;
+    min-width: 100%;
 }

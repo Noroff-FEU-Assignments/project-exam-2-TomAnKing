@@ -18,18 +18,19 @@
 }
 
 .navbar-light .navbar-nav .nav-link.active{
-    color: red;
-    border-bottom: 1px solid lightblue;
+    color: #2B7EFF;
+    border-bottom: 1px solid #2B7EFF;
     @media (max-width: 992px) {
-        background-color: lightcyan;
-        border-bottom: none;
+        border-top: 1px solid #D3D3D3;
+        border-bottom: 1px solid #D3D3D3;
        }
 }
 
 .signOut{
-    color: inherit !important;
+    color: #898A8A !important;
     font-weight: inherit !important;
     border-bottom: none !important;
+    border: none !important;
 }
 
 .navBar {
@@ -37,8 +38,3 @@
     z-index: 1;
 }
 
-
-
-.ms-auto .active {
-    color: blue;
-}

@@ -168,7 +168,7 @@
     margin-top: 2px;
     text-align: center;
     margin-top: 1em;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 2px 8px;
     padding-bottom: 0.5em;
 }
 
@@ -194,22 +194,18 @@
 }
 
 .allBtn {
-    background-color: blue;
-    padding: 1em 2em;
-    color: white;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    width: 300px;
-    margin: auto;
-    border-radius: 2em;
-    margin-top: 1em;
-    font-size: 20px;
+    color:  #2B7EFF;
+    font-size: 22px;
+    text-align: end;
+    margin-right: 1%;
+    display: block;
+    margin-top: 0.5em;
     @media (max-width: 992px) {
-        font-size: 16px;
+        font-size: 18px;
         }
 }
 
 .allBtn:hover {
-    color: white;
+    color:  #2B7EFF;
+    opacity: 0.8;
 }

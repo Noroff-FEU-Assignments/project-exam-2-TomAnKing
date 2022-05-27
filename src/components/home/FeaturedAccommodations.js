@@ -16,7 +16,7 @@ function FeaturedAccommotadions({ hotels }) {
         })}
       </div>
       <Link to={"/accommodations"} className="allBtn">
-        All Accommodations
+        More &gt;
       </Link>
     </div>
   );

@@ -1,29 +1,54 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import Head from "../layout/Head";
+import AddHotel from "./AddHotel";
+import DisplayEnquiries from "./DisplayEnquiries";
+import DisplayMessages from "./DisplayMessages";
 
 function Admin() {
+  const [content, setContent] = useState("hotel");
+
+  function handleClick(val) {
+    switch (val) {
+      case "hotel":
+        setContent("hotel");
+        break;
+      case "message":
+        setContent("message");
+        break;
+      case "enquiries":
+        setContent("enquiries");
+        break;
+      default:
+        setContent("hotel");
+    }
+  }
+
+  function GetContent() {
+    switch (content) {
+      case "hotel":
+        return <AddHotel />;
+      case "message":
+        return <DisplayMessages />;
+      case "enquiries":
+        return <DisplayEnquiries />;
+    }
+  }
+
   return (
     <>
       <Head title={"Admin"} />
       <div className="container">
         <h1>Admin</h1>
-        <div className="adminLinks">
-          <div className="adminLink">
-            <Link to={`/admin/add-hotel`}>
-              <h2>Add Hotel</h2>
-            </Link>
-          </div>
-          <div className="adminLink">
-            <Link to={`/admin/messages`}>
-              <h2>Messages</h2>
-            </Link>
-          </div>
-          <div className="adminLink">
-            <Link to={`/admin/enquiries`}>
-              <h2>Enquiries</h2>
-            </Link>
-          </div>
-        </div>
+        <select
+          className="adminDropdown"
+          onChange={(e) => handleClick(e.target.value)}
+        >
+          <option value="hotel">Add Hotel</option>
+          <option value="message">Messages</option>
+          <option value="enquiries">Enquiries</option>
+        </select>
+        <GetContent />
       </div>
     </>
   );
