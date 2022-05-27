@@ -6,9 +6,6 @@ import Admin from "../admin/Admin";
 import FetchHotels from "../../config/FetchHotels";
 import AccommodationDetails from "../accommodations/AccommodationDetails";
 import Footer from "./Footer";
-import AddHotel from "../admin/AddHotel";
-import DisplayMessages from "../admin/DisplayMessages";
-import DisplayEnquiries from "../admin/DisplayEnquiries";
 import { useState } from "react";
 import SigninForm from "../forms/SigninForm";
 import NavBar from "./NavBar";
@@ -50,9 +47,6 @@ function Layout() {
             path="/accommodations/:id"
             element={<AccommodationDetails />}
           />
-          <Route path="/admin/add-hotel" element={<AddHotel />} />
-          <Route path="/admin/messages" element={<DisplayMessages />} />
-          <Route path="/admin/enquiries" element={<DisplayEnquiries />} />
         </Routes>
       </div>
       <Footer />

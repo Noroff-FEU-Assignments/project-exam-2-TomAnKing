@@ -194,7 +194,7 @@
 }
 
 .allBtn {
-    color:  #2B7EFF;
+    color: $primary-colour;
     font-size: 22px;
     text-align: end;
     margin-right: 1%;
@@ -206,6 +206,6 @@
 }
 
 .allBtn:hover {
-    color:  #2B7EFF;
+    color: $primary-colour;
     opacity: 0.8;
 }

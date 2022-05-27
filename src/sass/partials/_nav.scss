@@ -18,8 +18,8 @@
 }
 
 .navbar-light .navbar-nav .nav-link.active{
-    color: #2B7EFF;
-    border-bottom: 1px solid #2B7EFF;
+    color: $primary-colour;
+    border-bottom: 1px solid $primary-colour;
     @media (max-width: 992px) {
         border-top: 1px solid #D3D3D3;
         border-bottom: 1px solid #D3D3D3;
@@ -35,6 +35,6 @@
 
 .navBar {
     box-shadow: 0 2.5px 3px -2px grey;
-    z-index: 1;
+    z-index: 2;
 }
 

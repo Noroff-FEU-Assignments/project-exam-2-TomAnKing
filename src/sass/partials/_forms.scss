@@ -47,7 +47,7 @@
     margin-top: 2em;
     margin-bottom: 2em;
     border: none;
-    background-color: #2B7EFF;
+    background-color: $primary-colour;
     color: white;
     padding: 0.5em 2em;
     border-radius: 0.5em;
@@ -90,7 +90,7 @@
 }
 
 .formMessage {
-    color: green;
+    color: $green;
     text-align: center;
 }
 
