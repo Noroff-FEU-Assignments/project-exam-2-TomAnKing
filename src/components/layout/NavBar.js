@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 
 function NavBar({ auth, signOut }) {
   return (
-    <Navbar bg="light" expand="lg" className="navBar">
+    <Navbar sticky="top" bg="light" expand="lg" className="navBar">
       <Navbar.Brand className="navBrand">
         <NavLink to="/" className="nav-brand">
           Holidaze
