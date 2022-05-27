@@ -1,18 +1,27 @@
 .formError {
     color: red;
     margin-left: 15%;
+    @media (max-width: 992px) {
+        margin-left: 5%;
+        }
 }
 
 .formInput {
     display: block;
     margin: auto;
     width: 70%;
+    @media (max-width: 992px) {
+        width: 90%;
+        }
 }
 
 .formLabel {
     margin-left: 15%;
     margin-top: 1em;
     display: block;
+    @media (max-width: 992px) {
+        margin-left: 5%;
+        }
 }
 
 .form {
@@ -42,6 +51,16 @@
     border-radius: 2em;
     font-size: 20px;
     text-align: center;
+    @media (max-width: 992px) {
+        font-size: 16px;
+        }
+}
+
+#contained-modal-title-vcenter {
+    margin-left: 15%;
+    @media (max-width: 992px) {
+        margin-left: 5%;
+        }
 }
 
 .expDate {
@@ -49,6 +68,10 @@
     margin-left: 15%;
     display: inline;
     margin-right: 5px;
+    @media (max-width: 992px) {
+        margin-left: 5%;
+        width: 20%;
+        }
 }
 
 .month {
@@ -58,4 +81,13 @@
 .securityCode {
     width: 10%;
     margin-left: 15%;
+    @media (max-width: 992px) {
+        margin-left: 5%;
+        width: 20%;
+        }
+}
+
+.formMessage {
+    color: green;
+    text-align: center;
 }

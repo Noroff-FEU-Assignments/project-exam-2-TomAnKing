@@ -95,7 +95,10 @@ export default function BookingModal(props) {
         <Modal.Title id="contained-modal-title-vcenter">Booking</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <h2 style={{ display: booked ? "block" : "none" }}>
+        <h2
+          className="formMessage"
+          style={{ display: booked ? "block" : "none" }}
+        >
           Thank you for your booking
         </h2>
         <form onSubmit={handleSubmit(onSubmit)} className="">

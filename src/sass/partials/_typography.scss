@@ -1,3 +1,16 @@
 h1 {
     text-align: center;
+    font-family: $heading-font;
+    font-size: 50px;
+    @media (max-width: 992px) {
+        font-size: 40px;
+        }
 }
+
+
+p {
+    @media (max-width: 992px) {
+        font-size: 14px;
+        }
+}
+

@@ -135,21 +135,34 @@
   }
 
   .datePicker {
-    margin: 0;
+    @media (max-width: 992px) {
+      width: 100%;
+      display: block;
+      margin: auto;
+      text-align: center;
+     }
   }
 
   .detailTitle {
    text-align: start;
-    
+   font-size: 40px;
+   @media (max-width: 992px) {
+    text-align: center;
+   }
   }
 
   .detailPrice {
     
-
+    @media (max-width: 992px) {
+     text-align: center;
+     }
   }
 
   .rightGrid {
     margin-left: 3em;
+    @media (max-width: 992px) {
+      margin: 0;
+     }
   }
 
   .bookingBtn {
@@ -159,10 +172,23 @@
     padding: 0.5em 6em;
     border-radius: 2em;
     font-size: 20px;
+    @media (max-width: 992px) {
+      width: 80%;
+      max-width: 400px;
+      display: block;
+      margin: auto;
+      font-size: 16px;  
+     }
   }
 
   .detailText {
     margin-top: 2em;
+  }
+
+  .detailAddress {
+    @media (max-width: 992px) {
+      text-align: center;
+      }
   }
 
   .detailAddress p{
@@ -176,7 +202,6 @@
 
   .testGrid {
     display: grid;
-
     grid-template-columns: 1fr 1fr;
     @media (max-width: 992px) {
       grid-template-columns: 1fr;

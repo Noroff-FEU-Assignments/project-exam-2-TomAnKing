@@ -55,7 +55,11 @@ class Accommodations extends React.Component {
         : this.props.hotels;
 
     if (!this.props.hotels.length && !this.props.error) {
-      return <div className="container">loading .....</div>;
+      return (
+        <div className="container">
+          <div className="loader"></div>
+        </div>
+      );
     }
 
     const style = "hotel";

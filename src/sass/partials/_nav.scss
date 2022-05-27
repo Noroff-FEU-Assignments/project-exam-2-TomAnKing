@@ -1,6 +1,7 @@
 .nav-brand {
-    font-size: 26px;
+    font-size: 30px;
     margin-left: 2em;
+    font-family: $heading-font;
     @media (max-width: 992px) {
       text-align: center;
       margin-left: 1em;

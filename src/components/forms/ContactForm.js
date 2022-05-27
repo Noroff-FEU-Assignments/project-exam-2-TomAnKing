@@ -73,7 +73,10 @@ export default function ContactForm() {
     <div className="container">
       <form onSubmit={handleSubmit(onSubmit)} className="form">
         <h1>Contact</h1>
-        <h2 style={{ display: thanks ? "block" : "none" }}>
+        <h2
+          className="formMessage"
+          style={{ display: thanks ? "block" : "none" }}
+        >
           Thanks for contacting us
         </h2>
 

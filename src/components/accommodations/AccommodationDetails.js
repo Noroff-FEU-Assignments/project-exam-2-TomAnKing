@@ -49,7 +49,11 @@ function AccommodationDetails() {
   );
 
   if (loading) {
-    return <div className="container">Loading...</div>;
+    return (
+      <div className="container">
+        <div className="loader"></div>
+      </div>
+    );
   }
 
   if (error) {
