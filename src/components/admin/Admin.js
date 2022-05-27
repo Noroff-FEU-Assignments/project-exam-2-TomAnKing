@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import Head from "../layout/Head";
 import AddHotel from "./AddHotel";
 import DisplayEnquiries from "./DisplayEnquiries";
@@ -33,6 +32,7 @@ function Admin() {
       case "enquiries":
         return <DisplayEnquiries />;
     }
+    return <AddHotel />;
   }
 
   return (
