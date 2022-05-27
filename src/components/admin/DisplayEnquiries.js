@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function DisplayEnquiries() {
   const [enquiries, setEnquiry] = useState([]);
@@ -36,6 +37,12 @@ function DisplayEnquiries() {
 
   return (
     <div className="container">
+      <div className="backBtn">
+        <Link to="/admin">
+          <p>Admin &gt;</p>
+        </Link>
+        <p className="backBtnTitle">Enquiries</p>
+      </div>
       <h1>Enquiries</h1>
       <div className="messages">
         {enquiries.map((enquiry) => {

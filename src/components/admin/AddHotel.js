@@ -5,6 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import FormError from "../forms/FormError";
 import useAxios from "../../hooks/useAxios";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const schema = yup.object().shape({
   title: yup.string().required("Title is required"),
@@ -89,6 +90,12 @@ export default function AddHotel() {
 
   return (
     <div className="container">
+      <div className="backBtn">
+        <Link to="/admin">
+          <p>Admin &gt;</p>
+        </Link>
+        <p className="backBtnTitle">Add Hotel</p>
+      </div>
       <form onSubmit={handleSubmit(onSubmit)} className="form">
         <h1>Add Hotel</h1>
         {serverError && <FormError>{serverError}</FormError>}

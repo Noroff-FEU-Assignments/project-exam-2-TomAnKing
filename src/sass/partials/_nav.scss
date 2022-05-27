@@ -19,15 +19,17 @@
 
 .navbar-light .navbar-nav .nav-link.active{
     color: red;
-    font-weight: bold;
+    border-bottom: 1px solid lightblue;
     @media (max-width: 992px) {
-        background-color: grey;
+        background-color: lightcyan;
+        border-bottom: none;
        }
 }
 
 .signOut{
     color: inherit !important;
     font-weight: inherit !important;
+    border-bottom: none !important;
 }
 
 .navBar {

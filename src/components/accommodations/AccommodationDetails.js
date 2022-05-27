@@ -5,6 +5,7 @@ import { DateRange } from "react-date-range";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import BookingModal from "./BookingModal";
+import { Link } from "react-router-dom";
 
 function AccommodationDetails() {
   const [isActive, setIsActive] = useState(false);
@@ -133,6 +134,12 @@ function AccommodationDetails() {
         </ul>
       </div>
       <div className="container">
+        <div className="backBtn">
+          <Link to="/accommodations">
+            <p>Accommodations &gt;</p>
+          </Link>
+          <p className="backBtnTitle">{hotel.title.rendered}</p>
+        </div>
         <div className="hotel-detail">
           <div className="testGrid">
             <div className="gridTest">

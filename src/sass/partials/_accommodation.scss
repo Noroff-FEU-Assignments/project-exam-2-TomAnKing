@@ -63,8 +63,13 @@
       background-color: rgba(0, 0, 0, .4);
       }
   }
-  
 
+  .backBtn {
+    display: inline-flex;
+    font-size: 20px;
+    gap: 10px;
+  }
+  
   
   .carousel-button.prev {
     left: 2rem;
