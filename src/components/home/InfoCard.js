@@ -8,7 +8,7 @@ function InfoCard() {
         other accommodations to ensure everyone a magical experience in Bergen.
         Through us you can book an accommodation that fits your needs and budget
         perfectly. Feel free to contact us if you have any questions regarding
-        accommodation, or activities to do while visiting Bergen.
+        accommodations, or activities to do while visiting Bergen.
       </p>
       <h3 className="standardsHeading">Standards for our accommodations</h3>
       <div className="accommodationStandards">

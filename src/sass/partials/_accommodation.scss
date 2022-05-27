@@ -59,16 +59,25 @@
   .carousel-button:hover {
     color: white;
     background-color: rgba(0, 0, 0, .2);
+    @media (max-width: 992px) {
+      background-color: rgba(0, 0, 0, .4);
+      }
   }
   
 
   
   .carousel-button.prev {
     left: 2rem;
+    @media (max-width: 992px) {
+      left: 0;
+      }
   }
   
   .carousel-button.next {
     right: 2rem;
+    @media (max-width: 992px) {
+      right: 0;
+      }
   }
 
   .close {
@@ -81,6 +90,9 @@
     color: #f1f1f1;
     font-size: 40px;
     font-weight: bold;
+    @media (max-width: 992px) {
+      right: 10px;
+      }
   }
   
   .close:hover,
