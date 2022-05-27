@@ -27,6 +27,7 @@ const schema = yup.object().shape({
 export default function AddHotel() {
   const [submitting, setSubmitting] = useState(false);
   const [serverError, setServerError] = useState(null);
+  const [loader, setLoader] = useState(false);
 
   const http = useAxios();
 
@@ -55,6 +56,7 @@ export default function AddHotel() {
     data.status = "publish";
 
     try {
+      setLoader(true);
       await http.post("/wp/v2/media", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
@@ -84,13 +86,17 @@ export default function AddHotel() {
     } finally {
       setSubmitting(false);
       window.location.reload(false);
+      setLoader(false);
     }
   }
 
-  return (
-    <>
-      <Head title={"Admin - Add Hotel"} />
-      <div className="container">
+  function DisplayContent() {
+    if (loader) {
+      return <div className="loader"></div>;
+    }
+
+    return (
+      <>
         <h1 className="adminContentTitle">Add Hotel</h1>
         <form onSubmit={handleSubmit(onSubmit)} className="form addHotelForm">
           {serverError && <FormError>{serverError}</FormError>}
@@ -186,6 +192,15 @@ export default function AddHotel() {
             <button className="formBtn">Add Hotel</button>
           </fieldset>
         </form>
+      </>
+    );
+  }
+
+  return (
+    <>
+      <Head title={"Admin - Add Hotel"} />
+      <div className="container">
+        <DisplayContent />
       </div>
     </>
   );

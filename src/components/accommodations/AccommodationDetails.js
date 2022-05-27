@@ -156,13 +156,13 @@ function AccommodationDetails() {
                 />
                 <img
                   onClick={handleClick}
-                  className="testImg"
+                  className="galleryImgTop"
                   src={hotel.acf.modal_image_1}
                   alt={hotel.title.rendered}
                 />
                 <img
                   onClick={handleClick}
-                  className="testImg2"
+                  className="galleryImgBottom"
                   src={hotel.acf.modal_image_2}
                   alt={hotel.title.rendered}
                 />
