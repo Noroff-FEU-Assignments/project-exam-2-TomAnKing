@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { BASE_URL } from "../../constants/api";
 
 import Head from "../layout/Head";
 
@@ -13,9 +14,7 @@ function DisplayMessages() {
 
     async function getMessages() {
       try {
-        const response = await axios.get(
-          "https://holidaze.tomanking.one/wp-json/wp/v2/messages"
-        );
+        const response = await axios.get(BASE_URL + "wp/v2/messages");
         setMessage(response.data);
       } catch (error) {
         setError(error);

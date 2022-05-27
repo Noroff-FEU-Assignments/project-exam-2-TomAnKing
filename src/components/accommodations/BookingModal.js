@@ -6,6 +6,7 @@ import FormError from "../forms/FormError";
 import { useState } from "react";
 import useAxios from "../../hooks/useAxios";
 import axios from "axios";
+import { BASE_URL, TOKEN_PATH } from "../../constants/api";
 
 const schema = yup.object().shape({
   fields: yup.object().shape({
@@ -54,10 +55,7 @@ export default function BookingModal(props) {
       username: "admin",
       password: "password123",
     };
-    const response = await axios.post(
-      "https://holidaze.tomanking.one/wp-json/jwt-auth/v1/token",
-      loginInfo
-    );
+    const response = await axios.post(BASE_URL + TOKEN_PATH, loginInfo);
 
     setToken(response.data.token);
   }

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { BASE_URL } from "../constants/api";
 
 export default function FetchHotels() {
   const [hotel, setHotel] = useState([]);
@@ -10,7 +11,7 @@ export default function FetchHotels() {
     async function getHotels() {
       try {
         const response = await axios.get(
-          "https://holidaze.tomanking.one/wp-json/wp/v2/hotels?per_page=100"
+          BASE_URL + "wp/v2/hotels?per_page=100"
         );
         setHotel(response.data);
       } catch (error) {

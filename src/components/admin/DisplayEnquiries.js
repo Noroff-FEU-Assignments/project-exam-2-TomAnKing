@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { BASE_URL } from "../../constants/api";
 
 import Head from "../layout/Head";
 
@@ -12,9 +13,7 @@ function DisplayEnquiries() {
 
     async function getEnquiries() {
       try {
-        const response = await axios.get(
-          "https://holidaze.tomanking.one/wp-json/wp/v2/enquiries"
-        );
+        const response = await axios.get(BASE_URL + "wp/v2/enquiries");
         setEnquiry(response.data);
       } catch (error) {
         setError(error);

@@ -6,6 +6,7 @@ import FormError from "../forms/FormError";
 import useAxios from "../../hooks/useAxios";
 import axios from "axios";
 import Head from "../layout/Head";
+import { BASE_URL } from "../../constants/api";
 
 const schema = yup.object().shape({
   title: yup.string().required("Title is required"),
@@ -70,9 +71,7 @@ export default function AddHotel() {
         },
       });
 
-      const images = await axios.get(
-        "https://holidaze.tomanking.one/wp-json/wp/v2/media"
-      );
+      const images = await axios.get(BASE_URL + "wp/v2/media");
 
       data.fields.modal_image_2 = images.data[0].id;
       data.fields.modal_image_1 = images.data[1].id;
