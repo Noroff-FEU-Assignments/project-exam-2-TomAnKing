@@ -5,6 +5,7 @@ import axios from "axios";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import FormError from "./FormError";
+import Head from "../layout/Head";
 
 const schema = yup.object().shape({
   fields: yup.object().shape({
@@ -70,62 +71,65 @@ export default function ContactForm() {
   }
 
   return (
-    <div className="container">
-      <form onSubmit={handleSubmit(onSubmit)} className="form">
-        <h1>Contact</h1>
-        <h2
-          className="formMessage"
-          style={{ display: thanks ? "block" : "none" }}
-        >
-          Thanks for contacting us
-        </h2>
+    <>
+      <Head title={"Contact Us"} />
+      <div className="container">
+        <form onSubmit={handleSubmit(onSubmit)} className="form">
+          <h1>Contact</h1>
+          <h2
+            className="formMessage"
+            style={{ display: thanks ? "block" : "none" }}
+          >
+            Thanks for contacting us
+          </h2>
 
-        <div>
-          <label className="formLabel">First Name</label>
-          <input
-            name="ddd"
-            {...register("fields.first_name")}
-            className="formInput"
-          />
-          {errors.fields?.first_name?.message && (
-            <FormError>{errors.fields?.first_name.message}</FormError>
-          )}
-        </div>
-        <div>
-          <label className="formLabel">Last Name</label>
-          <input
-            name="ddd"
-            {...register("fields.last_name")}
-            className="formInput"
-          />
-          {errors.fields?.last_name?.message && (
-            <FormError>{errors.fields?.last_name.message}</FormError>
-          )}
-        </div>
-        <div>
-          <label className="formLabel">Email</label>
-          <input
-            name="ddd"
-            {...register("fields.email")}
-            className="formInput"
-          />
-          {errors.fields?.email?.message && (
-            <FormError>{errors.fields?.email.message}</FormError>
-          )}
-        </div>
-        <div>
-          <label className="formLabel">Message</label>
-          <textarea
-            rows={10}
-            {...register("fields.message")}
-            className="formInput"
-          />
-          {errors.fields?.message?.message && (
-            <FormError>{errors.fields?.message.message}</FormError>
-          )}
-        </div>
-        <button className="formBtn">Contact</button>
-      </form>
-    </div>
+          <div>
+            <label className="formLabel">First Name</label>
+            <input
+              name="ddd"
+              {...register("fields.first_name")}
+              className="formInput"
+            />
+            {errors.fields?.first_name?.message && (
+              <FormError>{errors.fields?.first_name.message}</FormError>
+            )}
+          </div>
+          <div>
+            <label className="formLabel">Last Name</label>
+            <input
+              name="ddd"
+              {...register("fields.last_name")}
+              className="formInput"
+            />
+            {errors.fields?.last_name?.message && (
+              <FormError>{errors.fields?.last_name.message}</FormError>
+            )}
+          </div>
+          <div>
+            <label className="formLabel">Email</label>
+            <input
+              name="ddd"
+              {...register("fields.email")}
+              className="formInput"
+            />
+            {errors.fields?.email?.message && (
+              <FormError>{errors.fields?.email.message}</FormError>
+            )}
+          </div>
+          <div>
+            <label className="formLabel">Message</label>
+            <textarea
+              rows={10}
+              {...register("fields.message")}
+              className="formInput"
+            />
+            {errors.fields?.message?.message && (
+              <FormError>{errors.fields?.message.message}</FormError>
+            )}
+          </div>
+          <button className="formBtn">Contact</button>
+        </form>
+      </div>
+    </>
   );
 }

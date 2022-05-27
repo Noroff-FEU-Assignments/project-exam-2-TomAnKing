@@ -6,6 +6,7 @@ import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import BookingModal from "./BookingModal";
 import { Link } from "react-router-dom";
+import Head from "../layout/Head";
 
 function AccommodationDetails() {
   const [isActive, setIsActive] = useState(false);
@@ -105,6 +106,7 @@ function AccommodationDetails() {
 
   return (
     <>
+      <Head title={hotel.title.rendered} />
       <div
         className="carousel"
         data-carousel

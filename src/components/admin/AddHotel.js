@@ -6,6 +6,7 @@ import FormError from "../forms/FormError";
 import useAxios from "../../hooks/useAxios";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import Head from "../layout/Head";
 
 const schema = yup.object().shape({
   title: yup.string().required("Title is required"),
@@ -89,102 +90,111 @@ export default function AddHotel() {
   }
 
   return (
-    <div className="container">
-      <div className="backBtn">
-        <Link to="/admin">
-          <p>Admin &gt;</p>
-        </Link>
-        <p className="backBtnTitle">Add Hotel</p>
+    <>
+      <Head title={"Admin - Add Hotel"} />
+      <div className="container">
+        <div className="backBtn">
+          <Link to="/admin">
+            <p>Admin &gt;</p>
+          </Link>
+          <p className="backBtnTitle">Add Hotel</p>
+        </div>
+        <form onSubmit={handleSubmit(onSubmit)} className="form">
+          <h1>Add Hotel</h1>
+          {serverError && <FormError>{serverError}</FormError>}
+          <fieldset disabled={submitting}>
+            <div>
+              <label className="formLabel">Title</label>
+              <input
+                name="title2"
+                {...register("title")}
+                className="formInput"
+              />
+              {errors.title && <FormError>{errors.title.message}</FormError>}
+            </div>
+            <div>
+              <label className="formLabel">Content</label>
+              <textarea
+                rows={10}
+                {...register("content")}
+                className="formInput"
+              />
+              {errors.content && (
+                <FormError>{errors.content.message}</FormError>
+              )}
+            </div>
+            <div>
+              <label className="formLabel">Price</label>
+              <input
+                name="price"
+                {...register("fields.price")}
+                className="formInput"
+                type="number"
+              />
+              {errors.fields?.price && (
+                <FormError>{errors.fields?.price?.message}</FormError>
+              )}
+            </div>
+            <div>
+              <label className="formLabel">Stars</label>
+              <input
+                name="stars"
+                {...register("fields.stars")}
+                className="formInput"
+                type="number"
+              />
+              {errors.fields?.stars && (
+                <FormError>{errors.fields?.stars?.message}</FormError>
+              )}
+            </div>
+            <div>
+              <label className="formLabel">Address</label>
+              <input
+                name="title2"
+                {...register("fields.address")}
+                className="formInput"
+              />
+              {errors.fields?.address && (
+                <FormError>{errors.fields?.address?.message}</FormError>
+              )}
+            </div>
+            <div>
+              <label className="formLabel">Main Image</label>
+              <input
+                name="stars"
+                className="formInput"
+                type="file"
+                accept="image/*"
+                id="file0"
+              />
+              {errors.stars && <FormError>{errors.stars.message}</FormError>}
+            </div>
+            <div>
+              <label className="formLabel">Gallery Image 1</label>
+              <input
+                name="stars"
+                className="formInput"
+                type="file"
+                accept="image/*"
+                id="file1"
+              />
+              {errors.stars && <FormError>{errors.stars.message}</FormError>}
+            </div>
+            <div>
+              <label className="formLabel">Gallery Image 2</label>
+              <input
+                name="stars"
+                className="formInput"
+                type="file"
+                accept="image/*"
+                id="file2"
+              />
+              {errors.stars && <FormError>{errors.stars.message}</FormError>}
+            </div>
+            <button className="formBtn">Add Hotel</button>
+          </fieldset>
+        </form>
       </div>
-      <form onSubmit={handleSubmit(onSubmit)} className="form">
-        <h1>Add Hotel</h1>
-        {serverError && <FormError>{serverError}</FormError>}
-        <fieldset disabled={submitting}>
-          <div>
-            <label className="formLabel">Title</label>
-            <input name="title2" {...register("title")} className="formInput" />
-            {errors.title && <FormError>{errors.title.message}</FormError>}
-          </div>
-          <div>
-            <label className="formLabel">Content</label>
-            <textarea
-              rows={10}
-              {...register("content")}
-              className="formInput"
-            />
-            {errors.content && <FormError>{errors.content.message}</FormError>}
-          </div>
-          <div>
-            <label className="formLabel">Price</label>
-            <input
-              name="price"
-              {...register("fields.price")}
-              className="formInput"
-              type="number"
-            />
-            {errors.fields?.price && (
-              <FormError>{errors.fields?.price?.message}</FormError>
-            )}
-          </div>
-          <div>
-            <label className="formLabel">Stars</label>
-            <input
-              name="stars"
-              {...register("fields.stars")}
-              className="formInput"
-              type="number"
-            />
-            {errors.fields?.stars && (
-              <FormError>{errors.fields?.stars?.message}</FormError>
-            )}
-          </div>
-          <div>
-            <label className="formLabel">Address</label>
-            <input
-              name="title2"
-              {...register("fields.address")}
-              className="formInput"
-            />
-            {errors.fields?.address && (
-              <FormError>{errors.fields?.address?.message}</FormError>
-            )}
-          </div>
-          <div>
-            <label className="formLabel">Main Image</label>
-            <input
-              name="stars"
-              className="formInput"
-              type="file"
-              accept="image/*"
-              id="file0"
-            />
-            {errors.stars && <FormError>{errors.stars.message}</FormError>}
-          </div>
-          <div>
-            <label className="formLabel">Gallery Image 1</label>
-            <input
-              name="stars"
-              className="formInput"
-              type="file"
-              accept="image/*"
-              id="file1"
-            />
-            {errors.stars && <FormError>{errors.stars.message}</FormError>}
-          </div>
-          <div>
-            <label className="formLabel">Gallery Image 2</label>
-            <input
-              name="stars"
-              className="formInput"
-              type="file"
-              accept="image/*"
-              id="file2"
-            />
-            {errors.stars && <FormError>{errors.stars.message}</FormError>}
-          </div>
-          <button className="formBtn">Add Hotel</button>
-        </fieldset>
-      </form>
-    </div>
+    </>
   );
 }

@@ -3,10 +3,12 @@ import React from "react";
 import SearchBar from "./SearchBar";
 import InfoCard from "./InfoCard";
 import FeaturedAccommotadions from "./FeaturedAccommodations";
+import Head from "../layout/Head";
 
 function Home({ hotels }) {
   return (
     <>
+      <Head title={"Welcome To Holidaze"} />
       <div className="headerContainer">
         <h1 className="headerText">Welcome To Holidaze</h1>
         <img src={headerImage} className="headerImg" alt="bergen" />

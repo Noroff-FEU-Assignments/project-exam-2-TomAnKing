@@ -7,6 +7,7 @@ import FormError from "./FormError";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 import { BASE_URL, TOKEN_PATH } from "../../constants/api";
+import Head from "../layout/Head";
 
 const url = BASE_URL + TOKEN_PATH;
 
@@ -51,37 +52,40 @@ export default function LoginForm({ signIn }) {
     }
   }
   return (
-    <div className="container">
-      <form onSubmit={handleSubmit(onSubmit)} className="form">
-        <h1>Sign In</h1>
-        {loginError && <FormError>{loginError}</FormError>}
-        <fieldset disabled={submitting}>
-          <div>
-            <label className="formLabel">Username</label>
-            <input
-              name="username"
-              {...register("username")}
-              className="formInput"
-            />
-            {errors.username && (
-              <FormError>{errors.username.message}</FormError>
-            )}
-          </div>
-          <div>
-            <label className="formLabel">Password</label>
-            <input
-              name="password"
-              {...register("password")}
-              type="password"
-              className="formInput"
-            />
-            {errors.password && (
-              <FormError>{errors.password.message}</FormError>
-            )}
-          </div>
-          <button className="formBtn">Log In</button>
-        </fieldset>
-      </form>
-    </div>
+    <>
+      <Head title={"Sign In"} />
+      <div className="container">
+        <form onSubmit={handleSubmit(onSubmit)} className="form">
+          <h1>Sign In</h1>
+          {loginError && <FormError>{loginError}</FormError>}
+          <fieldset disabled={submitting}>
+            <div>
+              <label className="formLabel">Username</label>
+              <input
+                name="username"
+                {...register("username")}
+                className="formInput"
+              />
+              {errors.username && (
+                <FormError>{errors.username.message}</FormError>
+              )}
+            </div>
+            <div>
+              <label className="formLabel">Password</label>
+              <input
+                name="password"
+                {...register("password")}
+                type="password"
+                className="formInput"
+              />
+              {errors.password && (
+                <FormError>{errors.password.message}</FormError>
+              )}
+            </div>
+            <button className="formBtn">Log In</button>
+          </fieldset>
+        </form>
+      </div>
+    </>
   );
 }

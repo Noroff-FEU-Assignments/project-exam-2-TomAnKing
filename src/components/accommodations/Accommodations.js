@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import AccommodationItem from "./AccommodationItem";
 import React from "react";
+import Head from "../layout/Head";
 
 class Accommodations extends React.Component {
   constructor(props) {
@@ -66,6 +67,7 @@ class Accommodations extends React.Component {
 
     return (
       <>
+        <Head title={"Accommodations"} />
         <div className="container">
           <h1>Accommodations</h1>
           <div className="hotels">
