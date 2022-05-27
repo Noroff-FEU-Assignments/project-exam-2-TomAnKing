@@ -31,8 +31,9 @@ function Admin() {
         return <DisplayMessages />;
       case "enquiries":
         return <DisplayEnquiries />;
+      default:
+        return <AddHotel />;
     }
-    return <AddHotel />;
   }
 
   return (
