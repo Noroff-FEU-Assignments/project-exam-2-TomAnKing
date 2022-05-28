@@ -144,8 +144,8 @@ function AccommodationDetails() {
           <p className="backBtnTitle">{hotel.title.rendered}</p>
         </div>
         <div className="hotel-detail">
-          <div className="testGrid">
-            <div className="gridTest">
+          <div className="detailGrid">
+            <div>
               <div className="hotelDetailImages">
                 <img
                   onClick={handleClick}
@@ -168,7 +168,7 @@ function AccommodationDetails() {
                 />
               </div>
             </div>
-            <div className="gridTest rightGrid">
+            <div className="rightGrid">
               <h1 className="detailTitle">{hotel.title.rendered}</h1>
               <p className="detailPrice">
                 <span className="priceSpan">${hotel.acf.price}</span> Per Night
