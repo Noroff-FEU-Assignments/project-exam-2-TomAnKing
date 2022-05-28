@@ -10,7 +10,7 @@
     display: block;
     margin: auto;
     width: 70%;
-    border: 1px solid grey;
+    border: 1px solid $border-colour;
     border-radius: 0.2em;
     @media (max-width: 992px) {
         width: 90%;
