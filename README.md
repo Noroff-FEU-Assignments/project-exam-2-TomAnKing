@@ -1,73 +1,77 @@
-Username = admin
-Password = password123
+- Username = admin
+- Password = password123
 
-# Getting Started with Create React App
+# Holidaze
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![image](src/components/images/holidazeScreenshot.PNG)
 
-## Available Scripts
+This project is a imaginary booking site located in Bergen called Holidaze. The site also includes a admin section for adding new accommodations and to list messages from the contact form and enquiries from bookings.
 
-In the project directory, you can run:
+## Description
 
-### `npm start`
+Holidaze is a booking website located in Bergen Norway. The main section of the website is open for all users and allows them to search all the accommodations on the site, add a booking for a hotel and send messages through the contact form. The site also has a admin section which can be accessed by the correct username and password on the sign in form. In this section you can add new accommodations and read messages that users has submitted in the contact form and enquiries from bookings.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The website includes:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Home page with searchbar to search all accommodations
+- Accommodation page that displays all accommodations and a searchbar and a dropdown to filter searches.
+- Accommodation detail page that displays the accommodation you clicked with information and a booking modal to send a inquiry.
+- Contact page with contact form.
+- Sign in page to get access to admin section.
+- Admin page with form for adding new accommodations, and sections for displaying messages from contact form and enquiries from the booking modal.
 
-### `npm test`
+## Built With
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The tech stack used for this project:
 
-### `npm run build`
+- [React.js](https://reactjs.org/)
+- [Bootstrap](https://getbootstrap.com)
+- [Sass](https://sass-lang.com/)
+- [React Router Dom](https://reactrouter.com/)
+- [React Hook Form](https://react-hook-form.com/)
+- [@hookform/resolvers](https://www.npmjs.com/package/@hookform/resolvers)
+- [React Helmet](https://www.npmjs.com/package/react-helmet)
+- [React Date Range](https://hypeserver.github.io/react-date-range/)
+- [Axios](https://axios-http.com/docs/intro)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Getting Started
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Installing
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+To get the project starting you need to first clone the repo. After this you will need to change the capital letters of the file name in your local files to lowercase before installing the dependencies.
 
-### `npm run eject`
+1. Clone the repo:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+git clone https://github.com/Noroff-FEU-Assignments/project-exam-2-TomAnKing.git
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. Install the dependencies:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```
+npm install
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Running
 
-## Learn More
+To run the app, run the following command:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+npm start
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Contributing
 
-### Code Splitting
+If you want to make any contributions to this project please commit changes to your own branch and submit a pull request so your changes can be reviewed and approved before published.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Contact
 
-### Analyzing the Bundle Size
+If you have any questions regarding this project or want to contact me you can send me an email or send me a message on instagram.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- tommy996633@gmail.com
 
-### Making a Progressive Web App
+- [Instagram](https://www.instagram.com/tomanking/)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Acknowledgments
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is made in the context of an exam at Noroff School of technology which has helped with good knowledge and tutoring.
